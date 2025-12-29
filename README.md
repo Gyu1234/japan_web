@@ -2,11 +2,12 @@
 이 프로젝트는 Spring Boot와 React를 통합 관리하는 멀티 모듈 저장소입니다.
 
 📂 프로젝트 구조
+Plaintext
+
 japan_web (Root)
  ├── backend/          # Spring Boot (Java 17, Gradle)
  ├── frontend/         # React (JavaScript)
  └── .gitignore        # IDE 설정 및 라이브러리 제외 관리
-
 🛠️ 초기 개발 환경 세팅 (공통)
 1. IntelliJ 프로젝트 연결
 Backend: backend/build.gradle 파일을 우클릭하여 **'Add as Gradle Project'**를 선택합니다.
@@ -32,7 +33,6 @@ Bash
 cd backend
 ./gradlew bootRun
 🌐 Frontend (React)
-
 주요 설정
 환경 변수: frontend/.env 파일에 백엔드 API 주소가 설정되어 있습니다.
 
@@ -45,8 +45,7 @@ Bash
 
 cd frontend
 npm install   # 최초 1회 실행
-npm start
-
+npm start     #
 ⚠️ 주의사항 (필독)
 중첩 .git 삭제: 리액트 설치 시 생성되는 frontend/.git 폴더는 이미 삭제되었습니다. 향후 재설치 시에도 내부 .git 폴더가 생성되지 않도록 주의해야 합니다.
 
