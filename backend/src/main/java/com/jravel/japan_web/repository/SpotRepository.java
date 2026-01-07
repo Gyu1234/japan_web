@@ -2,21 +2,16 @@ package com.jravel.japan_web.repository;
 
 import com.jravel.japan_web.domain.Spot;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import java.util.List; // Arrays 대신 List를 사용합니다.
+import java.util.List;
 
-@Repository
 public interface SpotRepository extends JpaRepository<Spot, Long> {
 
-    // 1. [검색] 이름에 키워드가 포함된 여행지 검색
-    List<Spot> findByNameContaining(String keyword);
+    // 1. 통합 검색: 이름, 카테고리뿐만 아니라 '지역'으로도 검색 가능하게 확장
+    List<Spot> findByNameContainingOrCategoryContainingOrRegionContaining(String name, String category, String region);
 
-    // 2. [검색] 특정 지역 내에서 이름에 키워드가 포함된 여행지 검색
-    List<Spot> findByRegionAndNameContaining(String region, String keyword);
-
-    // 3. [추천/검색] 이름 검색 후 좋아요 순으로 정렬
-    List<Spot> findByNameContainingOrderByLikeCountDesc(String keyword);
-
-    // 4. [추천] 지역별로 좋아요가 많은 순서대로 정렬 (기존 Arrays를 List<Spot>으로 수정)
+    // 2. 지역별 좋아요순 랭킹: 특정 지역(예: 후쿠오카) 내에서 인기순 정렬
     List<Spot> findByRegionOrderByLikeCountDesc(String region);
+
+    // 3. 전체 랭킹: 지역 상관없이 현재 가장 인기 있는 '일본 전체 명소' Top 리스트용
+    List<Spot> findAllByOrderByLikeCountDesc();
 }
