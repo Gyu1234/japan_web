@@ -1,0 +1,2 @@
+INSERT INTO spots (name, region, description, category, latitude, longitude, address, like_count) VALUES ('신신라멘', '후쿠오카', '현지인이 줄 서서 먹는 라멘.', '음식점', 33.5912, 130.3989, 'Fukuoka Tenjin', 150);
+INSERT INTO spots (name, region, description, category, latitude, longitude, address, like_count) VALUES ('은각사', '교토', '일본 특유의 미를 느낀 정원.', '명소', 35.0272, 135.7982, 'Kyoto Sakyo', 85);

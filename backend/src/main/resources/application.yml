@@ -18,14 +18,16 @@ spring:
     console:
       enabled: true  # http://localhost:8081/h2-console
 
-  # JPA 설정
   jpa:
     hibernate:
-      ddl-auto: create    # 개발: create, 운영: validate
-    show-sql: true        # SQL 로그 출력
-    properties:
-      hibernate:
-        format_sql: true  # SQL 포맷팅
+      ddl-auto: create   # 서버 실행 시 엔티티를 보고 테이블 자동 생성
+    show-sql: true
+    # [핵심 설정] Hibernate가 테이블을 다 만든 후에 data.sql이 실행되게 합니다.
+    defer-datasource-initialization: true
+
+    sql:
+      init:
+        mode: always # 항상 data.sql을 실행하도록 설정
 
   # Thymeleaf 설정
   thymeleaf:
