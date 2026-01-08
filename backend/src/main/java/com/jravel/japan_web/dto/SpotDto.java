@@ -15,10 +15,12 @@ public class SpotDto {
         private String name;
         private String region;
         private String description;
-        private String category;    // 추가: 음식점/명소 구분
-        private Double latitude;    // 추가: 지도 위도
-        private Double longitude;   // 추가: 지도 경도
-        private String address;     // 추가: 주소
+        private String category;    // 음식점/명소 구분
+        private Double latitude;    // 지도 위도
+        private Double longitude;   // 지도 경도
+        private String address;     // 주소
+        private String imageUrl;    // 대표 이미지 URL
+        private Long likeCount;     // 좋아요 수
 
         public Spot toEntity() {
             return Spot.builder()

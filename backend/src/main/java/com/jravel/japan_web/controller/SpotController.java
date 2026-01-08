@@ -17,14 +17,17 @@ public class SpotController {
 
     // 1. 메인 검색창 검색
     @GetMapping("/search")
-    public List<SpotDto.Response> search(@RequestParam(name = "keyword", defaultValue = "") String keyword) {
-        return spotService.search(keyword);
+    public List<SpotDto.Response> search(
+        @RequestParam(name = "keyword", defaultValue = "") String keyword,
+        @RequestParam(name = "category", required = false) String category,
+        @RequestParam(name = "region", required = false) String region) {  
+        return spotService.getFilteredSpots(keyword, category, region);
     }
 
     // 2. 상세 페이지 조회 (ID 기반)
     @GetMapping("/{id}")
     public ResponseEntity<SpotDto.Response> getDetail(@PathVariable(name = "id") Long id) {
-        // 서비스에 findById 로직이 있다고 가정하고 호출합니다.
+        // 서비스에 findById 로직이 있다고 가정하고 호출.
         SpotDto.Response response = spotService.getSpotDetail(id);
         return ResponseEntity.ok(response);
     }
@@ -40,5 +43,7 @@ public class SpotController {
     public ResponseEntity<Long> addLike(@PathVariable(name = "id") Long id) {
         spotService.addLike(id);
         return ResponseEntity.ok(id);
+
+    
     }
 }

@@ -27,6 +27,8 @@ public class Spot {
 
     private String category;    // 음식점, 카페, 신사, 공원 등 구분
 
+    private String imageUrl;    // 대표 이미지 URL
+
     // 구글 맵 API 연동을 위한 핵심 데이터
     private Double latitude;    // 위도
     private Double longitude;   // 경도
@@ -38,11 +40,12 @@ public class Spot {
 
     @Builder
     public Spot(String name, String region, String description, String category,
-                Double latitude, Double longitude, String address) {
+                String imageUrl, Double latitude, Double longitude, String address) {
         this.name = name;
         this.region = region;
         this.description = description;
         this.category = category;
+        this.imageUrl = imageUrl;
         this.latitude = latitude;
         this.longitude = longitude;
         this.address = address;
