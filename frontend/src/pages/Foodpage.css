@@ -1,3 +1,221 @@
 /* GOOGLE FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+/* [수정]: 전체 레이아웃을 감싸는 컨테이너 스타일 */
+.main-layout-wrapper {
+    display: flex; /* 자식 요소(사이드바, 콘텐츠)를 가로로 배치 */
+    max-width: 1200px; /* 전체 레이아웃의 최대 너비 */
+    margin: 40px auto; /* 중앙 정렬 */
+    padding: 0 20px;
+}
+
+/* [추가]: 왼쪽 사이드바 영역 스타일 */
+.sidebar-filter-section {
+    flex-basis: 280px; /* 사이드바 고정 너비 */
+    flex-shrink: 0; /* 크기가 줄어들지 않도록 설정 */
+    padding-right: 20px; /* 오른쪽 콘텐츠와의 간격 */
+}
+
+/* [추가]: 오른쪽 콘텐츠 영역 스타일 */
+.content-area {
+    flex-grow: 1; /* 남은 공간을 모두 차지 */
+    min-width: 0; /* Flex 아이템에서 오버플로우 방지 */
+}
+
+/* 기본 레이아웃 컨테이너 */
+.top-search-filter,
+.search-results-section {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0 20px 20px;
+}
+
+/* ==================
+   상단 검색 위젯 스타일
+   ================== */
+.search-widget {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-widget input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-btn {
+    padding: 12px 25px;
+    background-color: #f0c14b;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 간편 필터 드롭다운 */
+.quick-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* ==================
+   검색 결과 섹션 (result-list에 그리드 추가)
+   ================== */
+.result-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+
+/* ==================
+   검색 결과 카드 스타일
+   ================== */
+.result-card {
+    /* [수정]: 카드 높이가 내용에 따라 자동으로 늘어나도록 height 속성을 제거하고 flex-stretch를 사용합니다. */
+    display: flex;
+    align-items: stretch; /* [핵심 추가] 자식 요소(이미지, 내용)의 높이를 맞춥니다. */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s;
+}
+
+.result-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    flex-shrink: 0;
+    /* [수정]: 이미지 컨테이너의 고정 높이 180px 제거 또는 증가 */
+    /* 높이를 제거하면 card-content의 높이에 맞춰 늘어납니다. */
+    width: 200px;
+    /* height: 180px; 제거 */
+    overflow: hidden;
+}
+
+.card-image img {
+    /* [핵심 수정]: 이미지 자체가 컨테이너를 가득 채우도록 height: 100% 유지 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* [핵심 수정]: 인라인 요소(img) 아래에 생기는 불필요한 공백 제거 */
+}
+
+.card-content {
+    flex-grow: 1;
+    padding: 15px 20px;
+}
+
+/* content-head는 card-content의 내용을 감싸는 용도 */
+.content-head {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-head .restaurant-name {
+    flex-basis: calc(100% - 100px);
+}
+.content-head .rating {
+    margin-left: auto;
+}
+
+.restaurant-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.rating {
+    font-size: 0.9rem;
+    color: #ff9900;
+    font-weight: 700;
+}
+
+.price-range, .location-tag {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 3px 0;
+    flex-basis: 100%;
+}
+
+.description {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 8px 0;
+    line-height: 1.4;
+    flex-basis: 100%;
+}
+
+.reservation-btn {
+    margin-top: 10px;
+    margin-left: auto;
+    padding: 8px 15px;
+    background-color: #f0c14b;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #333;
+}
+
+
+@media (max-width: 1024px) {
+    .main-layout-wrapper {
+        flex-direction: column;
+    }
+    .sidebar-filter-section {
+        flex-basis: auto;
+        padding: 20px;
+    }
+    .content-area {
+        padding: 0 20px;
+    }
+    .top-search-filter,
+    .search-results-section {
+        padding-left: 0;
+    }
+
+    .result-card {
+        flex-direction: column;
+    }
+    .card-image {
+        width: 100%;
+        height: 150px;
+    }
+    .content-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .content-head .restaurant-name {
+        flex-basis: 100%;
+    }
+    .content-head .rating {
+        margin-left: 0;
+    }
+    .reservation-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+}

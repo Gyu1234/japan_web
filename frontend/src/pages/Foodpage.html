@@ -4,42 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="/frontend/./src/pages/Foodpage.css">
 
     <title>SideBar sub menus</title>
 </head>
  <body>
     <main>
-      <section class="top-search-filter">
-        <div class="search-widget">
-          <input type="text" placeholder="지역,카테고리,키워드로 검색하세요">
-          <button class="search-btn">Search</button>
-        </div>
-        <div class="quick-filter">
-          <button class="filter-btn">지역전체</button>
-          <button class="filter-btn">음식</button>
-          <button class="filter-btn">평점순</button>
-        </div>
-      </section>
-      <section class="search-result-section">
-        <div class="result-list">
+        <div class="main-layout-wrapper">
 
-          <article class="result-card">
-            <div class="card-image">
-              <img src="/frontend/public/sushi_1.jpg" alt="도쿄 스시 사카나 대표 이미지">
-            </div>
-            <div class="card-content">
-              <div class="content-head">
-                <h3 class="restaurant-name">도쿄 스시 사카나 대표 이미지</h3>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-    </main>
+            <aside class="sidebar-filter-section">
+                <div class="sidebar-content">
+                    <h3>카테고리</h3>
+                    <div class="category-item">역사</div>
+                    <div class="category-item">미식</div>
+                    <div class="category-item">자연/힐링</div>
+                </div>
+            </aside>
 
-    <!-- JS -->
+            <div class="content-area">
+
+                <section class="top-search-filter">
+                    <div class="search-widget">
+                        <input type="text" placeholder="지역,카테고리,키워드로 검색하세요">
+                        <button class="search-btn">Search</button>
+                    </div>
+                    <div class="quick-filters">
+                        <button class="filter-btn">지역전체</button>
+                        <button class="filter-btn">음식</button>
+                    </div>
+                </section>
+
+                <section class="search-result-section">
+
+                    <div class="result-list">
+
+                        <article class="result-card">
+                            <div class="card-image">
+                                <img src="/frontend/public/sushi_1.jpg" alt="도쿄 스시 사카나 대표 이미지">
+                            </div>
+                            <div class="card-content">
+                                <div class="content-head">
+                                    <h3 class="restaurant-name">도쿄 스시 사카나</h3>
+                                    <p class="price-range">1인 가격 500엔~1000엔</p>
+                                    <p class="star">⭐⭐⭐⭐⭐ 4.8</p>
+                                    <p class="location-tag">스시 · 도쿄긴자</p>
+                                    <p class="description">가게설명</p>
+                                    <button class="reservation-btn">예약하기 ></button>
+                                </div>
+                              </div>
+                            </article>
+
+                    </div>
+                  </section>
+                 </div>
+                </div>
+              </main>
+
     <script src="/frontend/src/Foodpage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>
 </html>
