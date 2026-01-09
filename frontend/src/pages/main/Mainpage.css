@@ -220,7 +220,7 @@ body {
 }
 
 /* ====================================
-   MONTH CAROUSEL SECTION
+   SEASON CAROUSEL SECTION (수정됨)
 ==================================== */
 .month-section {
     background-color: #ffffff;
@@ -234,38 +234,53 @@ body {
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 40px;
+    font-weight: 700; /* 제목 강조 추가 */
 }
 
+/* 슬라이더 전체를 감싸는 영역 */
 .month-section .carousel-wrapper {
-    padding: 0 60px;
+    padding: 0 60px; /* 좌우 화살표 공간 확보 */
     position: relative;
+    overflow: hidden; /* 넘치는 카드 숨김 */
 }
 
-.month-section .owl-carousel {
-    overflow: hidden;
-    padding: 0;
+/* 카드들이 나열되는 트랙 (Flexbox 활용) */
+.month-section .carousel-track {
+    display: flex;
+    gap: 20px; /* 카드 사이 간격 */
+    overflow-x: auto; /* 내용이 넘치면 가로 스크롤 허용 (라이브러리 사용 시 hidden으로 변경됨) */
+    padding: 20px 10px; /* 그림자 잘림 방지용 여백 */
+    scroll-behavior: smooth; /* 부드러운 스크롤 */
+    
+    /* 스크롤바 숨기기 (크롬, 사파리 등) */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.month-section .carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
-.month-section .owl-carousel .owl-stage-outer {
-    background-color: #ffffff;
-    overflow: hidden;
-}
-
-.month-card.item {
+/* --- 개별 카드 스타일 (기존 디자인 유지) --- */
+.month-card {
+    /* flex: 0 0 auto; -> 카드가 찌그러지지 않게 고정 */
+    flex: 0 0 auto; 
     width: 250px;
     height: 380px;
-    border-radius: 10px;
+    border-radius: 16px; /* 둥근 모서리 조금 더 부드럽게 */
     overflow: hidden;
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 조금 더 고급스러운 애니메이션 */
     background-color: #ffffff;
 }
 
-.month-card.item.active {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+/* 활성화(Active) 혹은 호버(Hover) 시 효과 */
+.month-card.active,
+.month-card:hover {
+    transform: translateY(-10px) scale(1.02); /* 위로 살짝 뜨면서 커짐 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 2;
 }
 
 .month-card img {
@@ -273,8 +288,15 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
 }
 
+/* 호버 시 이미지 살짝 확대 (선택사항) */
+.month-card:hover img {
+    transform: scale(1.1);
+}
+
+/* --- 오버레이 텍스트 --- */
 .month-overlay {
     position: absolute;
     bottom: 20px;
@@ -283,61 +305,65 @@ body {
     color: #ffffff;
     font-size: 18px;
     font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    padding: 5px 10px;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.4); /* 반투명 배경 */
+    backdrop-filter: blur(4px); /* 배경 블러 효과 (모던한 느낌) */
+    white-space: nowrap;
 }
 
-.month-section .owl-nav {
-    margin-top: 0;
+/* --- 네비게이션 버튼 (범용 스타일로 변경) --- */
+.carousel-nav-btn {
     position: absolute;
     top: 50%;
-    width: 100%;
     transform: translateY(-50%);
-    z-index: 10;
-}
-
-.month-section .owl-nav button {
-    position: absolute;
-    top: 0;
-    width: 45px;
-    height: 45px;
-    background-color: #e74c3c !important;
-    color: white !important;
-    border-radius: 50% !important;
+    width: 50px;
+    height: 50px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    border: none;
     cursor: pointer;
-    opacity: 0.9;
-    transition: opacity 0.2s, background-color 0.2s;
-    font-size: 26px !important;
-    line-height: 40px;
-    text-align: center;
-    border: none !important;
-    outline: none !important;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
 }
 
-.month-section .owl-nav button:hover {
-    opacity: 1;
-    background-color: #c0392b !important;
+.carousel-nav-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-50%) scale(1.1);
 }
 
-.month-section .owl-prev {
-    left: 10px;
-}
+.carousel-nav-btn.prev { left: 10px; }
+.carousel-nav-btn.next { right: 10px; }
 
-.month-section .owl-next {
-    right: 10px;
-}
-
-.month-section .owl-nav button.disabled {
-    opacity: 0.4;
+/* 버튼 비활성화 상태 */
+.carousel-nav-btn:disabled {
+    background-color: #ccc;
     cursor: default;
-}
-.culture-section .section-title,
-.culture-section .section-subtitle {
-    text-align: center;
+    transform: translateY(-50%);
 }
 
+/* 모바일 반응형 */
+@media (max-width: 576px) {
+    .month-section .carousel-wrapper {
+        padding: 0 20px;
+    }
+    .month-card {
+        width: 200px;
+        height: 300px;
+    }
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
 /* =====================
    FOOTER
 ===================== */
