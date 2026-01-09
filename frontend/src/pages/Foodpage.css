@@ -1,6 +1,19 @@
 /* GOOGLE FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+/* =========================================
+   [핵심 수정] 브라우저 기본 여백 초기화
+   ========================================= */
+body {
+    margin: 0; /* body 태그의 기본 상하좌우 마진을 제거하여 양옆과 아래 여백 제거 */
+    padding: 0;
+    box-sizing: border-box; /* 패딩과 보더가 너비/높이에 포함되도록 설정 (권장) */
+}
+* {
+    box-sizing: border-box; /* 모든 요소에 적용 */
+}
+
+
 /* [수정]: 전체 레이아웃을 감싸는 컨테이너 스타일 */
 .main-layout-wrapper {
     display: flex; /* 자식 요소(사이드바, 콘텐츠)를 가로로 배치 */
@@ -91,9 +104,8 @@
    검색 결과 카드 스타일
    ================== */
 .result-card {
-    /* [수정]: 카드 높이가 내용에 따라 자동으로 늘어나도록 height 속성을 제거하고 flex-stretch를 사용합니다. */
     display: flex;
-    align-items: stretch; /* [핵심 추가] 자식 요소(이미지, 내용)의 높이를 맞춥니다. */
+    align-items: stretch;
     border: 1px solid #eee;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -108,19 +120,16 @@
 
 .card-image {
     flex-shrink: 0;
-    /* [수정]: 이미지 컨테이너의 고정 높이 180px 제거 또는 증가 */
-    /* 높이를 제거하면 card-content의 높이에 맞춰 늘어납니다. */
     width: 200px;
     /* height: 180px; 제거 */
     overflow: hidden;
 }
 
 .card-image img {
-    /* [핵심 수정]: 이미지 자체가 컨테이너를 가득 채우도록 height: 100% 유지 */
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block; /* [핵심 수정]: 인라인 요소(img) 아래에 생기는 불필요한 공백 제거 */
+    display: block;
 }
 
 .card-content {
@@ -180,6 +189,60 @@
     color: #333;
 }
 
+/* =====================
+   [추가] 페이지네이션 스타일
+   ===================== */
+.pagination-section {
+    display: flex;
+    justify-content: center; /* 페이지네이션을 중앙에 배치 */
+    padding: 30px 0 50px 0; /* 상하 여백 추가 */
+    margin-left: 20px; /* content-area의 왼쪽 padding 20px에 맞춰 조정 */
+}
+
+.pagination-wrapper {
+    display: flex; /* 버튼들을 가로로 나열 */
+    gap: 5px; /* 버튼 사이의 간격 */
+    align-items: center;
+}
+
+.page-btn {
+    width: 38px; /* 버튼의 고정 너비 */
+    height: 38px; /* 버튼의 고정 높이 */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* 살짝 둥근 모서리 */
+    background-color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* 활성화된 (현재) 페이지 버튼 스타일 */
+.page-btn.active {
+    background-color: #f0c14b; /* 주황색 배경 */
+    color: #333; /* 텍스트 색상 */
+    border-color: #f0c14b;
+    font-weight: 700;
+}
+
+/* 마우스 오버 시 스타일 */
+.page-btn:not(.active):hover {
+    background-color: #eee;
+}
+
+/* 화살표 버튼 스타일 */
+.page-btn.nav-arrow {
+    font-weight: 700;
+    width: 35px; /* 화살표 버튼은 살짝 좁게 */
+}
+
+/* 비활성화된 버튼 (첫 페이지에서 이전 버튼 등) */
+.page-btn.disabled {
+    cursor: default;
+    opacity: 0.5;
+    background-color: #fff;
+}
+
 
 @media (max-width: 1024px) {
     .main-layout-wrapper {
@@ -218,4 +281,41 @@
         width: 100%;
         margin-left: 0;
     }
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+    background-color: #272727;
+    padding-bottom: 20px;
+    /* [핵심 수정]: 푸터 상단 마진을 제거하고, 본문과의 간격이 필요하면 padding-top으로 조정합니다. */
+    margin-top: 0;
+    padding-top: 0;
+}
+
+footer .menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+footer .menu li a {
+    color: #ccc;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 15px;
+    text-decoration: none;
+}
+
+footer .menu li a:hover {
+    color: #fff;
+}
+
+footer .info,
+footer .copyright {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
 }
