@@ -54,4 +54,37 @@ public class SpotService {
 
         return new SpotDto.Response(spot); // 엔티티를 DTO로 변환하여 반환
     }
+    // 필터링된 명소 목록 조회
+    public List<SpotDto.Response> getFilteredSpots(String keyword, String category, String region) {
+        List<Spot> spots;
+
+        boolean isKeywordEmpty = (keyword == null || keyword.isEmpty());
+        boolean isCategoryEmpty = (category == null || category.isEmpty());
+        boolean isRegionEmpty = (region == null || region.isEmpty());
+
+        if (!isKeywordEmpty && isCategoryEmpty && isRegionEmpty) {
+            // 키워드만 있는 경우
+            spots = spotRepository.findByNameContaining(keyword);
+        } else if (isKeywordEmpty && !isCategoryEmpty && isRegionEmpty) {
+            // 카테고리만 있는 경우
+            spots = spotRepository.findByCategory(category);
+        } else if (isKeywordEmpty && isCategoryEmpty && !isRegionEmpty) {
+            // 지역만 있는 경우
+            spots = spotRepository.findByRegion(region);
+        } else if (isKeywordEmpty && !isCategoryEmpty && !isRegionEmpty) {
+            // 카테고리와 지역이 있는 경우
+            spots = spotRepository.findByRegionAndCategory(region, category);
+        } else {
+            // 그 외의 조합은 통합 검색으로 처리
+            spots = spotRepository.findByNameContainingOrCategoryContainingOrRegionContaining(
+                    isKeywordEmpty ? "" : keyword,
+                    isCategoryEmpty ? "" : category,
+                    isRegionEmpty ? "" : region
+            );
+        }
+
+        return spots.stream()
+                .map(SpotDto.Response::new)
+                .collect(Collectors.toList());
+    }
 }

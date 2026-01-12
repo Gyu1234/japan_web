@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./Mainpage.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-2" href="#">Japan travel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto navbar-nav-scroll">
+                <li class="nav-item">
+                    <a class="nav-link active fs-2" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-2" href="#">Destinations</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fs-2" href="#" role="button" data-bs-toggle="dropdown">
+                        Themes
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">미식 (グルメ)</a></li>
+                        <li><a class="dropdown-item" href="#">온천 (温泉)</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">문화유산</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-2" href="#">Community</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <img src="/frontend/public/kimo.jpg" alt="메인 이미지">
+</section>
+
+<section class="search-section my-5">
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-6">
+            <form class="search-box d-flex g-0">
+                <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+                <button class="btn btn-success rounded-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="card-section">
+    <div class="card-grid">
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/tokyo.jpg" alt="Tokyo">
+            </div>
+            <div class="card-content">
+                <h3>간토</h3>
+                <p>일본의 수도 도쿄를 중심으로 현대적인 도시 활력과 자연이 공존하는 일본의 심장부입니다.
+                    도쿄에서는 초고층 빌딩과 역사적인 사찰이 어우러진 독특한 경험을 할 수 있으며,
+                    시부야와 긴자 같은 트렌드의 중심지입니다. 주변 **가나가와현(요코하마)**의 항구 도시 낭만,
+                    그리고 닛코의 세계유산 사원들과 하코네의 후지산 전망 온천은 도심 가까이에서 휴식을 선사합니다.</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/dohoku.jpg" alt="dohoku">
+            </div>
+            <div class="card-content">
+                <h3>도호쿠</h3>
+                <p>혼슈 북단에 위치하며, 웅장한 자연과 깊은 설국 문화가 살아 숨 쉬는 지역입니다.
+                     **미야기현의 마쓰시마(松島)**는 일본 3대 절경 중 하나로 꼽힙니다.
+                     아오모리현에서는 네부타 마쓰리를, 겨울에는 야마가타현 자오에서
+                     신비로운 '수빙(樹氷)'을 감상할 수 있습니다. 센다이 규탕 등 독특하고 따뜻한 미식을 경험하며,
+                    고요하고 사계절이 뚜렷한 일본의 자연미를 만끽할 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/Hokkaido.jpg" alt="Hokkaido">
+            </div>
+            <div class="card-content">
+                <h3>홋카이도</h3>
+                <p>일 년 내내 청정한 자연이 살아 숨 쉬는 북쪽의 섬, 홋카이도.
+                    겨울에는 새하얀 눈 축제와 설경이 당신을 맞이하며, 여름에는 끝없이 펼쳐진
+                    라벤더 밭(후라노)에서 그림 같은 풍경을 선사합니다.
+                    삿포로의 싱싱한 해산물과 징기스칸으로 미식을 즐기고,
+                    오타루의 운하와 유리 공예 거리에서 낭만을 느껴보세요. 사계절 색다른 매력이 가득한 휴식처입니다</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/zukoku.jpg" alt="zukoku">
+            </div>
+            <div class="card-content">
+                <h3>주코쿠</h3>
+                <p>혼슈 서부에 위치하며, 산인(山陰)과 산요(山陽) 지역으로 나뉘어 각기 다른 매력을 가집니다.
+                     산요 지역은 온난한 기후와 세토 내해의 아름다운 섬들,
+                     그리고 히로시마의 역사적인 평화 기념 공원으로 유명합니다.
+                     산인 지역은 신화가 깃든 **이즈모타이샤(出雲大社)**와 돗토리 사구 같은
+                     독특한 자연 경관을 자랑하며,
+                     고즈넉하고 전통적인 일본의 정취를 느낄 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/osaka.jpg" alt="osaka">
+            </div>
+            <div class="card-content">
+                <h3>간사이</h3>
+                <p>일본의 부엌이라 불리는 간사이는 맛있는 음식과 유쾌한 에너지가 넘치는 도시입니다.
+                    도톤보리 강변의 화려한 네온사인 아래에서 타코야키와 오코노미야키의 진수를 경험하고,
+                    오사카성에서 역사의 숨결을 느껴보세요.
+                    웃음과 활력이 가득한 서일본의 중심에서 당신의 미식 여행이 시작됩니다</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/kyushu.jpg" alt="fukuoka">
+            </div>
+            <div class="card-content">
+                <h3>규슈</h3>
+                <p>한국에서 가장 가깝고, 따뜻한 정이 흐르는 규슈 지방
+                    나카스 강변을 따라 늘어선 포장마차(야타이)의 정겨운 불빛 아래서
+                    돈코츠 라멘을 맛보고, 하카타의 여유로운 분위기를 만끽해 보세요.
+                    도심 속에서도 자연을 느낄 수 있는 평온함 속에서 완벽한 휴식이 기다리고 있습니다</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/sikoku.jpg" alt="sikoku">
+            </div>
+            <div class="card-content">
+                <h3>시코쿠</h3>
+                <p>일본의 4대 섬 중 가장 작으며, 풍부한 자연과 순례 문화가 살아 숨 쉬는 곳입니다.
+                    웅장한 나루토 해협의 소용돌이와 아름다운 세토 내해의 섬들이 절경을 이룹니다.
+                    도고 온천에서 휴식을 취하고, 88개 사찰을 순례하는 '오헨로'의 고즈넉한 길을 따라
+                    깊은 평온함을 느낄 수 있습니다.
+                    신선한 해산물과 다채로운 우동 등 미식도 풍부합니다.</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/okinawa.jpg" alt="okinawa">
+            </div>
+            <div class="card-content">
+                <h3>오키나와</h3>
+                <p>일본 본토와는 이국적인 분위기를 자랑하는 남쪽의 섬으로,
+                    에메랄드빛 바다와 하얀 모래사장이 펼쳐지는 아열대 휴양지입니다.
+                    슈리성 등 류큐 왕국 시대의 독특한 문화유산이 남아 있으며, 본토와는 차별화된
+                    **찬푸루(볶음 요리)**나 오리온 맥주 같은 개성 있는 미식 문화를 즐길 수 있습니다.
+                    완벽한 해변 휴양과 다이빙, 그리고 독특한 섬 문화를 체험하기에 이상적인 곳입니다.</p>
+            </div>
+        </div>
+
+        <div class="travel-card">
+            <div class="card-image">
+                <img src="/frontend/public/huzi.jpg" alt="huzi">
+            </div>
+            <div class="card-content">
+                <h3>도카이</h3>
+                <p>혼슈의 중앙부에 위치하며, 후지산과 **아이치현(나고야)**을 중심으로 한 산업 및 교통의 요충지입니다.
+                    시즈오카현에서는 웅장한 후지산의 다양한 모습을 감상하며 녹차밭을 거닐 수 있고,
+                    나고야에서는 **히츠마부시(장어 덮밥)**와 같은 독특한 지역 미식을 즐길 수 있습니다.
+                     현대적인 도시와 일본을 상징하는 거대한 자연이 공존하는 지역입니다.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="food-section">
+    <h2 class="section-title">Food Journey in Japan</h2>
+    <div class="item-list">
+        <div class="item active" style="background-image: url(/frontend/public/sushi.jpg);">
+            <div class="item-desc">
+                <h3>Sushi</h3>
+                <p>신선한 해산물과 장인의 기술이 만나는 일본 미식의 정점입니다.</p>
+            </div>
+        </div>
+        <div class="item" style="background-image: url(/frontend/public/ramen.jpg);">
+            <div class="item-desc"><h3>Ramen</h3></div>
+        </div>
+        <div class="item" style="background-image: url(/frontend/public/udon.jpg);">
+            <div class="item-desc"><h3>Udon</h3></div>
+        </div>
+        <div class="item" style="background-image: url(/frontend/public/Gyukatsu.jpg);">
+            <div class="item-desc"><h3>Gyukatsu</h3></div>
+        </div>
+        <div class="item" style="background-image: url(/frontend/public/yakiniku.jpg);">
+            <div class="item-desc"><h3>Yakiniku</h3></div>
+        </div>
+        <div class="item" style="background-image: url(/frontend/public/Izakaya.jpg);">
+            <div class="item-desc"><h3>Izakaya</h3></div>
+        </div>
+        <div class="item" style="background-image: url(/frontend/public/others.jpg);">
+            <div class="item-desc"><h3>Others</h3></div>
+        </div>
+    </div>
+</section>
+
+<section class="month-section">
+    <h1 class="section-title">계절을 만나는 일본</h1>
+    <div class="carousel-wrapper">
+        <div class="owl-carousel custom-carousel">
+            <div class="month-card item"><img src="/frontend/public/12month.jpg" alt="12month"><div class="month-overlay">12월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/1month.jpg" alt="1month"><div class="month-overlay">1월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/2month.jpg" alt="2month"><div class="month-overlay">2월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/3month.jpg" alt="3month"><div class="month-overlay">3월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/4month.jpg" alt="4month"><div class="month-overlay">4월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/5month.jpg" alt="5month"><div class="month-overlay">5월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/6month.jpg" alt="6month"><div class="month-overlay">6월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/7month.jpg" alt="7month"><div class="month-overlay">7월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/8month.jpg" alt="8month"><div class="month-overlay">8월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/9month.jpg" alt="9month"><div class="month-overlay">9월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/10month.jpg" alt="10month"><div class="month-overlay">10월의 일본</div></div>
+            <div class="month-card item"><img src="/frontend/public/11month.jpg" alt="11month"><div class="month-overlay">11월의 일본</div></div>
+        </div>
+    </div>
+</section>
+
+     <!-- ================= CULTURE SECTION ================= -->
+<section class="culture-section">
+    <h2 class="section-title">만남의 세 갈래 길</h2>
+<div class="card-grid">
+
+    <div class="culture-card">
+      <div class="card-image">
+        <img src="/frontend/public/gion.jpg" alt="matsuri">
+      </div>
+      <div class="card-content">
+        <h3>마츠리</h3>
+        <p>일본 각 지역의 전통과 에너지를 느낄 수 있는 축제 문화입니다.</p>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="card-image">
+        <img src="/frontend/public/jinja.jpg" alt="jinja">
+      </div>
+      <div class="card-content">
+        <h3>신사</h3>
+        <p>자연과 신앙이 어우러진 일본 고유의 정신 문화를 담고 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="card-image">
+        <img src="/frontend/public/ani.jpg" alt="anime">
+      </div>
+      <div class="card-content">
+        <h3>애니메이션</h3>
+        <p>일본을 대표하는 현대 문화 콘텐츠로 전 세계에 영향을 줍니다.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  </section>
+</section>
+
+<footer>
+    <div class="inner">
+        <ul class="menu">
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">위치정보 이용약관</a></li>
+            <li><a href="#">여행상품 이용안내</a></li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">문의하기</a></li>
+        </ul>
+    </div>
+
+    <div class="info">
+        <span>운영사 : Japan Travel Guide</span>
+        <span>대표자 : 홍길동</span>
+        <span>TEL : 02-0000-0000</span>
+        <span>Email : support@japantravel.com</span>
+    </div>
+
+    <p class="copyright">© Japan Travel Guide. All Rights Reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="./Mainpage.js"></script>
+</body>
+</html>
