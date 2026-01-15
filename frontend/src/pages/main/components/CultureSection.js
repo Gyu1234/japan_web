@@ -24,3 +24,5 @@ const CultureSection = () => {
         </section>
     );
 }
+
+export default CultureSection;
