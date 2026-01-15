@@ -2,7 +2,7 @@ import React from 'react';
 // 공통 레이아웃
 import Header from '../../components/layouts/Header';
 import Footer from '../../components/layouts/Footer';
-//import SearchBar from '../../components/layouts/SearchBar';
+import SearchBar from '../../components/layouts/SearchBar';
 // 메인 전용 컴포넌트
 import MainHero from './components/MainHero';
 import RegionGrid from './components/RegionGrid';
@@ -19,7 +19,7 @@ const MainPage = () => {
       
       <main>
         <MainHero />
-        {/* <SearchBar /> */}
+        <SearchBar/>
         <RegionGrid />
         <CultureSection />
         <FoodSection />
