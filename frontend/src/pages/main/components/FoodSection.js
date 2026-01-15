@@ -1,7 +1,7 @@
-import React, { useState } from 'react'; // 1. useState를 불러옵니다.
+import React, { useState } from 'react'; 
 
 const FoodSection = () => {
-  // 2. '어떤 카드가 활성화되었는지' 저장하는 상태 공간을 만듭니다. (기본값은 1번 스시)
+  
   const [activeIndex, setActiveIndex] = useState(1);
 
   const foodItems = [
@@ -21,10 +21,10 @@ const FoodSection = () => {
         {foodItems.map((item) => (
           <div 
             key={item.id}
-            // 3. 현재 클릭된 번호(activeIndex)와 내 번호(item.id)가 같으면 active 클래스를 붙입니다.
+            // 현재 클릭된 번호(activeIndex)와 내 번호(item.id)가 같으면 active 클래스를 붙입니다.
             className={`item ${activeIndex === item.id ? 'active' : ''}`}
             style={{ backgroundImage: `url(${item.img})` }}
-            // 4. 클릭하면 내 번호를 activeIndex로 바꿔라! 라고 명령합니다.
+            // 클릭하면 내 번호를 activeIndex로 바꿔라! 라고 명령합니다.
             onClick={() => setActiveIndex(item.id)}
           >
             <div className="item-desc">
