@@ -1,13 +1,12 @@
 import React from 'react';
 // 공통 레이아웃
-import Header from '../../components/layout/Header';
-import Footer from '../../components/layout/Footer';
-import SearchBar from '../../components/layout/SearchBar';
+import Header from '../../components/layouts/Header';
+import Footer from '../../components/layouts/Footer';
+//import SearchBar from '../../components/layouts/SearchBar';
 // 메인 전용 컴포넌트
 import MainHero from './components/MainHero';
 import RegionGrid from './components/RegionGrid';
 import FoodSection from './components/FoodSection';
-import SeasonCarousel from './components/SeasonSection';
 import CultureSection from './components/CultureSection';
 // 스타일
 import './MainPage.css';
@@ -20,11 +19,10 @@ const MainPage = () => {
       
       <main>
         <MainHero />
-        <SearchBar />
+        {/* <SearchBar /> */}
         <RegionGrid />
         <CultureSection />
         <FoodSection />
-        <SeasonCarousel />
       </main>
 
       <Footer />

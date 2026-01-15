@@ -25,3 +25,5 @@ const SeasonCarousel = () => {
         </section>
     );
 }
+
+export default SeasonCarousel;
