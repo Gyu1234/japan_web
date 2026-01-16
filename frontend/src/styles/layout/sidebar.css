@@ -1,0 +1,36 @@
+.sidebar {
+    background-color: #fff;
+    border-right: 1px solid #f1f1f1;
+    padding: 16px;
+}
+
+.sidebar-section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 18px 0 10px;
+    color: #333;
+    position: relative;
+    padding-left: 10px;
+}
+
+/* 제목 옆 노란색 세로선 */
+.sidebar-section-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 14px;
+    background-color: #f0c14b;
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+
+.sidebar .form-check:hover {
+    background-color: rgba(240, 193, 75, 0.15);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(240, 193, 75, 0.15);
+    color: #333;
+}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/main/MainPage';
+import './styles/layout/footer.css';
+import './styles/layout/header.css';
+import './styles/layout/searchbar.css';
 
 function App() {
   return (
@@ -12,7 +15,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           
           {/* 나중에 검색 페이지를 만드시면 아래 줄의 주석을 푸세요 */}
-          {/* <Route path="/search" element={<SearchPage />} /> */}
+          {/* <Route path="/destinations" element={<SearchPage />} /> */}
         </Routes>
       </div>
     </Router>

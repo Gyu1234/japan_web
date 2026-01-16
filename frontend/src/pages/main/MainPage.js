@@ -1,8 +1,8 @@
 import React from 'react';
 // 공통 레이아웃
-import Header from '../../components/layouts/Header';
-import Footer from '../../components/layouts/Footer';
-import SearchBar from '../../components/layouts/SearchBar';
+import Header from '../../components/commons/Header';
+import Footer from '../../components/commons/Footer';
+import SearchBar from '../../components/commons/SearchBar';
 // 메인 전용 컴포넌트
 import MainHero from './components/MainHero';
 import RegionGrid from './components/RegionGrid';

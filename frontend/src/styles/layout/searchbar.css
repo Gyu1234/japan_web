@@ -1,0 +1,17 @@
+/* =====================
+   SEARCH SECTION
+===================== */
+.search-section {
+    margin-top: 60px;
+    padding: 20px 0;
+    text-align: center; /* 내부 요소 중앙 정렬 */
+}
+
+/* 타베로그 스타일을 위해 서치바 내부 input/select 스타일이 필요하다면 추가 */
+.search-section form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
