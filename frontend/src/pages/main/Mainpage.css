@@ -38,11 +38,117 @@ body {
     display: block;
 }
 
+/* 화살표 공통 스타일 */
+.arrow-btn {
+  position: absolute;
+  z-index: 99 !important; /* 10에서 99로 대폭 상향 (라이브러리 요소보다 위로) */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(0, 0, 0, 0.4) !important; /* 배경을 어두운 반투명으로 변경 (흰 배경에서도 보이게) */
+  color: #ffffff !important;
+  border: none !important;
+  font-size: 2.5rem !important; /* 크기 약간 키움 */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.arrow-btn:hover {
+  background: rgba(0, 0, 0, 0.7) !important;
+  scale: 1.1;
+}
+
+/* 왼쪽 화살표 위치 */
+.left-arrow {
+  left: 30px !important;
+}
+
+/* 오른쪽 화살표 위치 */
+.right-arrow {
+  right: 30px !important;
+}
+
+/* (추가) 버튼 안의 텍스트 기호가 중앙에 안 올 경우를 대비 */
+.arrow-btn span {
+  line-height: 0;
+  margin-top: -4px; 
+}
+
 /* =====================
    SEARCH
 ===================== */
 .search-section {
     margin-top: 60px;
+}
+
+/* frontend/src/components/MainHero.css */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* 이미지가 넘치지 않도록 */
+}
+
+.hero-slide {
+  position: relative;
+  width: 100%;
+  height: 600px; /* 원하는 높이로 조절 */
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 잘리지 않고 영역을 채우도록 */
+  filter: brightness(60%); /* 이미지 어둡게 하여 텍스트 가독성 높임 */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white; /* 텍스트 색상 하얗게 */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2); /* 약간의 투명한 검은색 배경 추가로 텍스트 가독성 UP */
+}
+
+.hero-text {
+  font-size: 3.5em; /* 텍스트 크기 조절 */
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 */
+}
+
+.hero-subtext {
+  font-size: 1.8em; /* 서브 텍스트 크기 조절 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 */
+}
+
+/* 캐러셀의 하단 점(인디케이터) 스타일 */
+.carousel .control-dots .dot {
+  background: white; /* 점 색상 하얗게 */
+  opacity: 0.7;
+  box-shadow: none;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+}
+
+.carousel .control-dots .dot.selected {
+  background: #007bff; /* 선택된 점은 다른 색상 */
+  transform: scale(1.2);
 }
 
 /* ==========================================================
