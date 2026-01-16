@@ -6,6 +6,7 @@ import './styles/layout/footer.css';
 import './styles/layout/header.css';
 import './styles/layout/searchbar.css';
 
+
 function App() {
   return (
     //  반드시 전체를 <Router>로 감싸야 합니다.

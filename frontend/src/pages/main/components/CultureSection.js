@@ -2,10 +2,10 @@ import React from 'react';
 
 const CultureSection = () => {
     const cultures = [
-        { id: 'festivals', name: '축제', img: '/matsuri.jpg', desc: '일본의 다채로운 축제들' },
-        { id: 'traditions', name: '전통', img: '/tradition.jpg', desc: '오랜 역사와 전통 문화' },
-        { id: 'arts', name: '예술', img: '/arts.jpg', desc: '독특한 일본 예술 세계' },
-        { id: 'architecture', name: '건축', img: '/build.jpg', desc: '현대와 전통이 어우러진 건축물' },   
+        { id: 'festivals', name: '축제', img: '/images/mainpage/culture/matsuri.jpg', desc: '일본의 다채로운 축제들' },
+        { id: 'traditions', name: '전통', img: '/images/mainpage/culture/tradition.jpg', desc: '오랜 역사와 전통 문화' },
+        { id: 'arts', name: '예술', img: '/images/mainpage/culture/arts.jpg', desc: '독특한 일본 예술 세계' },
+        { id: 'architecture', name: '건축', img: '/images/mainpage/culture/build.jpg', desc: '현대와 전통이 어우러진 건축물' },   
     ];
 
     return (

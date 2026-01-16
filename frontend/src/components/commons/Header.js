@@ -8,7 +8,7 @@ const Header = () => {
         {/* HOME 글자 대신 로고 이미지 적용 */}
         <Link className="navbar-brand" to="/">
           <img 
-            src="Japan_logo.jpg" 
+            src="/images/logo/Japan_logo.jpg" 
             alt="Japan Travel Logo" 
             style={{ height: '50px', width: 'auto' }} 
           />
