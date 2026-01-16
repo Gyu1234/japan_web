@@ -983,57 +983,47 @@
             filteredList.sort((a, b) => b.like - a.like);
             renderCards(filteredList);
         });
-        // 체크박스 필터 이벤트 + html 전송 함수
+        // ============================================================이 아래로 전부 수정되었습니다!============================================================
         const checkboxes = document.querySelectorAll(".form-check-input"); // querySelectorAll: 이 클래스를 가진 애들 다 이리로 와!
-        checkboxes.forEach((checkbox) => {
-            checkbox.addEventListener("change", () => {
-                const checkedValues = [];
-                checkboxes.forEach((item) => {
-                    if (item.checked) {
-                        checkedValues.push(item.dataset.category); // push: 리스트 맨 뒤에 새로운 항목을 집어넣는 동작
-                    }
-                });
-                if (checkedValues.length === 0) {
-                    filteredList = Data;
-                } else {
-                    filteredList = Data.filter((item) => {
-                        return checkedValues.includes(item.category);
-                    });
-                }
-                renderCards(filteredList);
-            });
-        });
-        // 지역 필터 함수
         let selectedLocation = "";
-        function filterByLocation(location) {
-            selectedLocation = location;
-            filteredList = Data.filter((item) => {
-                return (
-                    selectedLocation === "" ||
-                    item.location.includes(selectedLocation)
-                );
+        const searchInput = document.getElementById("search-input");
+        // 필터 함수(html 전송 함수 내장)
+        function filtering() {
+            const categoryValues = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.dataset.category);
+            const searchValue = searchInput.value.toLowerCase();
+            const filteredList = Data.filter((item) => {
+                const categoryFilter = (categoryValues.length === 0 || categoryValues.includes(item.category));
+                const locationFilter = (selectedLocation === "" || selectedLocation.includes(item.location));
+                const searchFilter = item.name.toLowerCase().includes(searchValue);
+                return categoryFilter && locationFilter && searchFilter;
             });
             renderCards(filteredList);
         }
-        // 검색 함수
-        const searchInput = document.getElementById("search-input");
-        const searchInputValue = "";
-        function Search() {
-            searchInputValue = searchInput.value.toLowerCase();
-            filteredList = Data.filter((item) =>
-                item.name.toLowerCase().includes(searchInputValue)
-            );
-            renderCards(filteredList)
-        }
-        // 검색 버튼 클릭 이벤트 + 검색 함수
+        // 체크박스 감지 + 필터 함수
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+                filtering();
+            });
+        });
+        // 지역 감지 + 필터 함수
+        const listGroupItems = document.querySelectorAll(".list-group-item");
+        listGroupItems.forEach((listGroupItem) => {
+            listGroupItem.addEventListener("click", (e) => {
+                e.preventDefault(); // preventDefault: 브라우저가 기본적으로 하는 행동을 하지 마!
+                const location = listGroupItem.dataset.location;
+                selectedLocation = location;
+                filtering();
+            });
+        });
+        // 검색 버튼 감지 + 필터 함수
         const searchBtn = document.getElementById("search-btn")
         searchBtn.addEventListener("click", function () {
-            Search();
+            filtering();
         });
-        // 엔터 키 클릭 이벤트 + 검색 함수
+        // 엔터 키 감지 + 필터 함수
         searchInput.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
-                Search();
+                filtering();
             }
         });
     </script>
