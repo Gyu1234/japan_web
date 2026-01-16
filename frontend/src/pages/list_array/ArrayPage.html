@@ -82,6 +82,36 @@
             color: #333;
         }
 
+        .location-body {
+            padding: 0 !important;
+        }
+
+        .list-group-item {
+            border: none !important;
+            border-bottom: 1px solid #f9f9f9 !important;
+            padding: 12px 20px !important;
+            transition: all 0.2s ease;
+        }
+
+        .list-group-item:hover {
+            background-color: #fff9e6 !important;
+            color: #f0c14b !important;
+            cursor: pointer;
+        }
+
+        .accordion-item {
+            border: none !important;
+            margin-bottom: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        .active-location {
+            background-color: #f0c14b !important;
+            color: #333 !important;
+            font-weight: bold !important;
+            border-radius: 4px !important;
+        }
+
         /* ==============================nav============================== */
 
         .nav {
@@ -420,7 +450,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item location-item">
                         <h2 class="accordion-header" id="panels-stay-open-heading-five">
                             <button class="accordion-button sidebar-section-title collapsed" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#panels-stay-open-collapse-five"
@@ -430,41 +460,32 @@
                         </h2>
                         <div id="panels-stay-open-collapse-five" class="accordion-collapse collapse"
                             aria-labelledby="panels-stay-open-heading-five">
-                            <div class="accordion-body">
+                            <div class="accordion-body location-body">
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Tokyo">
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Tokyo">
                                         도쿄
                                     </a>
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Yokohama">
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Yokohama">
                                         요코하마
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Hakone">
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Hakone">
                                         하코네
                                     </a>
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Osaka">
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Osaka">
                                         오사카
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Kyoto">
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Kyoto">
                                         교토
                                     </a>
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Nara">
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Nara">
                                         나라
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Hokkaido">
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Hokkaido">
                                         홋카이도
                                     </a>
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Fukuoka">
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Fukuoka">
                                         후쿠오카
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action" data-location="Okinawa">
                                     <a href="#" class="list-group-item list-group-item-action" data-location="Okinawa">
                                         오키나와
                                     </a>
@@ -1016,11 +1037,18 @@
         });
         // 지역 감지 + 필터 함수
         const listGroupItems = document.querySelectorAll(".list-group-item");
-        listGroupItems.forEach((listGroupItem) => {
-            listGroupItem.addEventListener("click", (e) => {
+        listGroupItems.forEach((item) => {
+            item.addEventListener("click", (e) => {
                 e.preventDefault(); // preventDefault: 브라우저가 기본적으로 하는 행동을 하지 마!
-                const location = listGroupItem.dataset.location;
-                selectedLocation = location;
+                const location = item.dataset.location;
+                if (selectedLocation === location) {
+                    selectedLocation = "";
+                    item.classList.remove("active-location");
+                } else {
+                    listGroupItems.forEach((li) => li.classList.remove("active-location"));
+                    item.classList.add("active-location");
+                    selectedLocation = location;
+                }
                 filtering();
             });
         });
