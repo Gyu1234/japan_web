@@ -35,6 +35,26 @@ const Sidebar = ({ onFilterChange, onLocationChange }) => {
         { id: 'anime', label: '애니메이션 성지', cat: 'anime' },
       ],
     },
+    {
+      id: 'nature',
+      title: '자연',
+      items: [
+        { id: 'shrine', label: '산', cat: 'shrine' },
+        { id: 'temple', label: '', cat: 'temple' },
+        { id: 'castle', label: '성', cat: 'castle' },
+        { id: 'history_site', label: '유적지', cat: 'history' },
+      ],
+    },
+    {
+      id: 'food',
+      title: '음식',
+      items: [
+        { id: 'shrine', label: '산', cat: 'shrine' },
+        { id: 'temple', label: '', cat: 'temple' },
+        { id: 'castle', label: '성', cat: 'castle' },
+        { id: 'history_site', label: '유적지', cat: 'history' },
+      ],
+    }
     // ... 추가 카테고리 (food, nature 등) 동일한 형식으로 구성 가능
   ];
 
