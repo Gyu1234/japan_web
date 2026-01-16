@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>range</title>
+    <!-- bootstrap v5.3-->
+    <!-- CSS(Cascading Style Sheets) 패키지, cdnjs에서 긁어옴 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- custom style -->
+    <style>
+        /* ==============================side============================== */
+        .sidebar {
+            background-color: #fff;
+            border-right: 1px solid #f1f1f1;
+            padding: 16px;
+        }
+
+        .sidebar-section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 18px 0 10px;
+            color: #333;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .sidebar-section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 4px;
+            height: 14px;
+            background-color: #f0c14b;
+            transform: translateY(-50%);
+            border-radius: 2px;
+        }
+
+        .sidebar .form-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar .form-check:hover {
+            background-color: rgba(240, 193, 75, 0.15);
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #f1c40f;
+            border-color: #f1c40f;
+        }
+
+        .sidebar input[type="checkbox"]:checked+span {
+            color: #b88900;
+            font-weight: 700;
+        }
+
+        .sidebar-section-header:hover button {
+            color: #f0c14b;
+        }
+
+        .sidebar-section-header:hover .accordion-button::after {
+            filter: brightness(0) saturate(100%) invert(74%) sepia(52%) saturate(460%) hue-rotate(359deg);
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.2rem rgba(240, 193, 75, 0.4);
+            border-color: #f0c14b;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(240, 193, 75, 0.15);
+            color: #333;
+        }
+
+        /* ==============================nav============================== */
+
+        .nav {
+            border-bottom: 1px solid rgba(240, 193, 75, 0.35);
+            background-color: #fff;
+        }
+
+        .nav-link {
+            color: #555;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(240, 193, 75, 0.15);
+            color: #333;
+        }
+
+        .nav .nav-btn {
+            border: none;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .nav .nav-btn:hover {
+            background-color: rgba(240, 193, 75, 0.15);
+            ;
+        }
+
+        .nav .nav-btn.active {
+            background-color: #f0c14b;
+        }
+
+        /* ==============================search============================== */
+        .search-widget {
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .search-widget input[type="text"] {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-btn {
+            padding: 12px 25px;
+            background-color: #f0c14b;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* card */
+        .result-card {
+            display: flex;
+            align-items: stretch;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s;
+        }
+
+        .result-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            flex-shrink: 0;
+            width: 200px;
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            object-fit: cover;
+        }
+
+        .card-content {
+            flex-grow: 1;
+            padding: 15px 20px;
+        }
+
+        .content-head {
+            /* content-head는 card-content의 내용을 감싸는 용도 */
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .content-head .card-name {
+            flex-basis: calc(100% - 100px);
+        }
+
+        .content-head .rating {
+            margin-left: auto;
+        }
+
+        .card-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .rating {
+            font-size: 0.9rem;
+            color: #ff9900;
+            font-weight: 700;
+        }
+
+        .price,
+        .location-display {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 3px 0;
+            flex-basis: 100%;
+        }
+
+        .description {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 8px 0;
+            line-height: 1.4;
+            flex-basis: 100%;
+        }
+
+        .reservation-btn {
+            margin-top: 10px;
+            margin-left: auto;
+            padding: 8px 15px;
+            background-color: #f0c14b;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* ==============================footer============================== */
+        footer {
+            background-color: #272727;
+            padding-bottom: 20px;
+        }
+
+        footer .menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 30px 0;
+        }
+
+        footer .menu li a {
+            color: #ccc;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 15px;
+            text-decoration: none;
+        }
+
+        footer .menu li a:hover {
+            color: #fff;
+        }
+
+        footer .info,
+        footer .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- ==============================side============================== -->
+                <div class="accordion sidebar">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header sidebar-section-header" id="panels-stay-open-heading-one">
+                            <button class="accordion-button sidebar-section-title sidebar-section-title" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panels-stay-open-collapse-one"
+                                aria-expanded="true" aria-controls="panels-stay-open-collapse-one">
+                                역사
+                            </button>
+                        </h2>
+                        <div id="panels-stay-open-collapse-one" class="accordion-collapse collapse show"
+                            aria-labelledby="panels-stay-open-heading-one">
+                            <div class="accordion-body">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="shrine" id="shrine">
+                                    <span class="form-check-label" for="shrine">
+                                        신사
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="temple" id="temple">
+                                    <span class="form-check-label" for="temple">
+                                        절
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="castle" id="castle">
+                                    <span class="form-check-label" for="castle">
+                                        성
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="history"
+                                        id="history">
+                                    <span class="form-check-label" for="history">
+                                        유적지
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panels-stay-open-heading-two">
+                            <button class="accordion-button sidebar-section-title collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panels-stay-open-collapse-two"
+                                aria-expanded="false" aria-controls="panels-stay-open-collapse-two">
+                                문화
+                            </button>
+                        </h2>
+                        <div id="panels-stay-open-collapse-two" class="accordion-collapse collapse"
+                            aria-labelledby="panels-stay-open-heading-twoid">
+                            <div class="accordion-body">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="festival"
+                                        id="festival">
+                                    <span class="form-check-label" for="festival">
+                                        마츠리(축제)
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="gallery"
+                                        id="gallery">
+                                    <span class="form-check-label" for="gallery">
+                                        미술관
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="museum" id="museum">
+                                    <span class="form-check-label" for="museum">
+                                        박물관
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="anime" id="anime">
+                                    <span class="form-check-label" for="anime">
+                                        애니메이션 성지
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panels-stay-open-heading-three">
+                            <button class="accordion-button sidebar-section-title collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panels-stay-open-collapse-three"
+                                aria-expanded="false" aria-controls="panels-stay-open-collapse-three">
+                                미식
+                            </button>
+                        </h2>
+                        <div id="panels-stay-open-collapse-three" class="accordion-collapse collapse"
+                            aria-labelledby="panels-stay-open-heading-three">
+                            <div class="accordion-body">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="sushi-ramen"
+                                        id="sushi-ramen">
+                                    <span class="form-check-label" for="sushi-ramen">
+                                        스시/라멘
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="cafe-dessert"
+                                        id="cafe-dessert">
+                                    <span class="form-check-label" for="cafe-dessert">
+                                        카페/디저트
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="izakaya"
+                                        id="izakaya">
+                                    <span class="form-check-label" for="izakaya">
+                                        이자카야
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panels-stay-open-heading-four">
+                            <button class="accordion-button sidebar-section-title collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panels-stay-open-collapse-four"
+                                aria-expanded="false" aria-controls="panels-stay-open-collapse-four">
+                                자연/힐링
+                            </button>
+                        </h2>
+                        <div id="panels-stay-open-collapse-four" class="accordion-collapse collapse"
+                            aria-labelledby="panels-stay-open-heading-four">
+                            <div class="accordion-body">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="onsen" id="onsen">
+                                    <span class="form-check-label" for="onsen">
+                                        온천
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="park" id="park">
+                                    <span class="form-check-label" for="park">
+                                        공원
+                                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" data-category="hiking" id="hiking">
+                                    <span class="form-check-label" for="hiking">
+                                        등산로
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panels-stay-open-heading-five">
+                            <button class="accordion-button sidebar-section-title collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panels-stay-open-collapse-five"
+                                aria-expanded="false" aria-controls="panels-stay-open-collapse-five">
+                                지역
+                            </button>
+                        </h2>
+                        <div id="panels-stay-open-collapse-five" class="accordion-collapse collapse"
+                            aria-labelledby="panels-stay-open-heading-five">
+                            <div class="accordion-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        도쿄
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        요코하마
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        하코네
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        오사카
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        교토
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        나라
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        홋카이도
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        후쿠오카
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        오키나와
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <!-- ==============================search============================== -->
+                <section class="top-search-filter">
+                    <div class="search-widget">
+                        <input id="search-input" type="text" placeholder="지역,카테고리,키워드로 검색하세요">
+                        <button class="search-btn" id="search-btn">
+                            Search
+                        </button>
+                    </div>
+                </section>
+                <!-- ==============================nav============================== -->
+                <ul class="nav nav-tabs mb-3" role="tablist">
+                    <li class="nav-item nav-item-button nav-section-header">
+                        <button class="nav-link active nav-btn" id="popularity-tab" data-bs-toggle="tab"
+                            data-bs-target="#tab-pane" type="button">
+                            인기 순
+                        </button>
+                    </li>
+                    <li class="nav-item nav-item-button nav-section-header">
+                        <button class="nav-link nav-btn" id="rating-tab" data-bs-toggle="tab" data-bs-target="#tab-pane"
+                            type="button">
+                            별점 순
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-pane" role="tabpanel">
+                        <div id="card-list">
+                            <!-- ==============================card============================== -->
+                            <article class="result-card" data-category="shrine" data-location="Tokyo">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EA%B3%A0%EC%96%91%EC%9D%B4.jpeg?raw=true"
+                                        alt="고양이">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">고양이</h3>
+                                        <p class="price">1인 가격 1,200엔 ~ 1,800엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐5.0</small>
+                                            <small class="text-body-secondary">❤️400</small>
+                                        </p>
+                                        <p class="location-display">도쿄도 시부야구</p>
+                                        <p class="description">귀엽고 영리하며, 독립적인 성격과 부드러운 털을 가진 매력적인 반려동물입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="temple" data-location="Yokohama">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EA%B0%95%EC%95%84%EC%A7%80.jpeg?raw=true"
+                                        alt="강아지">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">강아지</h3>
+                                        <p class="price">1인 가격 1,500엔 ~ 2,200엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.0</small>
+                                            <small class="text-body-secondary">❤️500</small>
+                                        </p>
+                                        <p class="location-display">요코하마시 나카구</p>
+                                        <p class="description">사람을 잘 따르고 충성심이 강하며, 풍부한 감정 표현으로 기쁨을 주는 다정한 반려 동물입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="castle" data-location="Hakone">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/images.webp?raw=true"
+                                        alt="햄스터">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">햄스터</h3>
+                                        <p class="price">1인 가격 800엔 ~ 1,200엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.2</small>
+                                            <small class="text-body-secondary">❤️752</small>
+                                        </p>
+                                        <p class="location-display">하코네정 모토하코네</p>
+                                        <p class="description">작은 몸집으로 공간을 적게 차지하며 해바라기씨를 까먹는 모습이 매력적인 소동물입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="history" data-location="Osaka">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpeg?raw=true"
+                                        alt="토끼">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">토끼</h3>
+                                        <p class="price">1인 가격 1,100엔 ~ 1,600엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.5</small>
+                                            <small class="text-body-secondary">❤️890</small>
+                                        </p>
+                                        <p class="location-display">오사카시 주오구</p>
+                                        <p class="description">길쭉한 귀와 코를 씰룩이는 모습이 귀여우며 배변 훈련이 가능해 실내에서 키우기 좋습니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="festival" data-location="Kyoto">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(1).jpeg?raw=true"
+                                        alt="기니피그">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">기니피그</h3>
+                                        <p class="price">1인 가격 950엔 ~ 1,400엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐3.8</small>
+                                            <small class="text-body-secondary">❤️432</small>
+                                        </p>
+                                        <p class="location-display">교토시 히가시야마구</p>
+                                        <p class="description">휘파람 같은 소리로 주인과 대화하며 사회성이 좋아 함께 시간을 보내기 즐거운 친구입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="gallery" data-location="Nara">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(2).jpeg?raw=true"
+                                        alt="고슴도치">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">고슴도치</h3>
+                                        <p class="price">1인 가격 1,300엔 ~ 1,900엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.0</small>
+                                            <small class="text-body-secondary">❤️615</small>
+                                        </p>
+                                        <p class="location-display">나라시 고린초</p>
+                                        <p class="description">처음엔 낯을 가리지만 친해지면 배를 보여주는 반전 매력을 가진 야행성 동물입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="museum" data-location="Hokkaido">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(3).jpeg?raw=true"
+                                        alt="친칠라">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">친칠라</h3>
+                                        <p class="price">1인 가격 1,800엔 ~ 2,500엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.7</small>
+                                            <small class="text-body-secondary">❤️328</small>
+                                        </p>
+                                        <p class="location-display">홋카이도 삿포로시</p>
+                                        <p class="description">실크처럼 부드러운 털을 가졌으며 영리하고 수명이 길어 오랜 시간 함께할 수 있습니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="anime" data-location="Fukuoka">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(11).jpeg?raw=true"
+                                        alt="왕관앵무 화이트페이스">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">왕관앵무 화이트페이스</h3>
+                                        <p class="price">1인 가격 1,400엔 ~ 2,000엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.9</small>
+                                            <small class="text-body-secondary">❤️951</small>
+                                        </p>
+                                        <p class="location-display">후쿠오카시 하카타구</p>
+                                        <p class="description">얼굴 전체가 깨끗하고 아름다운 흰색을 띠는 매력적인 변종입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="sushi-ramen" data-location="Okinawa">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(5).jpeg?raw=true"
+                                        alt="카나리아">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">카나리아</h3>
+                                        <p class="price">1인 가격 900엔 ~ 1,350엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐3.5</small>
+                                            <small class="text-body-secondary">❤️210</small>
+                                        </p>
+                                        <p class="location-display">오키나와현 나하시</p>
+                                        <p class="description">아름다운 노랫소리로 집안의 분위기를 평화롭게 만들어주는 고운 빛깔의 새입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="cafe-dessert" data-location="Tokyo">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(6).jpeg?raw=true"
+                                        alt="거북이">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">거북이</h3>
+                                        <p class="price">1인 가격 1,000엔 ~ 1,500엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.1</small>
+                                            <small class="text-body-secondary">❤️567</small>
+                                        </p>
+                                        <p class="location-display">도쿄도 미나토구</p>
+                                        <p class="description">느긋한 움직임으로 마음의 여유를 주며 관리가 비교적 까다롭지 않은 장수의 상징입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="izakaya" data-location="Osaka">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(7).jpeg?raw=true"
+                                        alt="레오파드 게코">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">레오파드 게코</h3>
+                                        <p class="price">1인 가격 2,000엔 ~ 2,800엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.6</small>
+                                            <small class="text-body-secondary">❤️784</small>
+                                        </p>
+                                        <p class="location-display">오사카시 나니와구</p>
+                                        <p class="description">웃는 듯한 얼굴 표정과 순한 성격을 가진 파충류 입문용 도마뱀입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="onsen" data-location="Hakone">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(8).jpeg?raw=true"
+                                        alt="우파루파">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">우파루파</h3>
+                                        <p class="price">1인 가격 1,600엔 ~ 2,300엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.3</small>
+                                            <small class="text-body-secondary">❤️642</small>
+                                        </p>
+                                        <p class="location-display">하코네정 고라</p>
+                                        <p class="description">항상 웃고 있는 듯한 신비로운 외모를 가진 수생 동물로 물멍에 최고입니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="park" data-location="Yokohama">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(9).jpeg?raw=true"
+                                        alt="구피">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">구피</h3>
+                                        <p class="price">1인 가격 850엔 ~ 1,150엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐3.9</small>
+                                            <small class="text-body-secondary">❤️820</small>
+                                        </p>
+                                        <p class="location-display">요코하마시 미나토미라이</p>
+                                        <p class="description">화려한 꼬리 지느러미를 흔들며 헤엄치는 모습이 아름답고 번식이 쉽습니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="result-card" data-category="hiking" data-location="Kyoto">
+                                <div class="card-image">
+                                    <img src="https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(10).jpeg?raw=true"
+                                        alt="슈가글라이더">
+                                </div>
+                                <div class="card-content">
+                                    <div class="content-head">
+                                        <h3 class="card-name">슈가글라이더</h3>
+                                        <p class="price">1인 가격 1,700엔 ~ 2,400엔</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">⭐4.8</small>
+                                            <small class="text-body-secondary">❤️493</small>
+                                        </p>
+                                        <p class="location-display">교토시 아라시야마</p>
+                                        <p class="description">주인의 품속으로 날아와 안기는 애교가 많으며 유대감이 형성되면 매우 친밀해집니다.</p>
+                                        <button class="reservation-btn">예약하기 ></button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bootstrap v5.3-->
+    <!-- JS(JavaScript) 패키지, cdnjs에서 긁어옴 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // 명부 (데이터)
+        let Data = [
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EA%B3%A0%EC%96%91%EC%9D%B4.jpeg?raw=true",
+                name: "고양이",
+                description: "귀엽고 영리하며, 독립적인 성격과 부드러운 털을 가진 매력적인 반려동물입니다.",
+                rating: 5.0,
+                like: 400,
+                category: "shrine",
+                price: "1인 가격 1,200엔 ~ 1,800엔",
+                locationDisplay: "도쿄도 시부야구",
+                location: "Tokyo"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EA%B0%95%EC%95%84%EC%A7%80.jpeg?raw=true",
+                name: "강아지",
+                description: "사람을 잘 따르고 충성심이 강하며, 풍부한 감정 표현으로 기쁨을 주는 다정한 반려 동물입니다.",
+                rating: 4.0,
+                like: 500,
+                category: "temple",
+                price: "1인 가격 1,500엔 ~ 2,200엔",
+                locationDisplay: "요코하마시 나카구",
+                location: "Yokohama"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/images.webp?raw=true",
+                name: "햄스터",
+                description: "작은 몸집으로 공간을 적게 차지하며 해바라기씨를 까먹는 모습이 매력적인 소동물입니다.",
+                rating: 4.2,
+                like: 752,
+                category: "castle",
+                price: "1인 가격 800엔 ~ 1,200엔",
+                locationDisplay: "하코네정 모토하코네",
+                location: "Hakone"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpeg?raw=true",
+                name: "토끼",
+                description: "길쭉한 귀와 코를 씰룩이는 모습이 귀여우며 배변 훈련이 가능해 실내에서 키우기 좋습니다.",
+                rating: 4.5,
+                like: 890,
+                category: "history",
+                price: "1인 가격 1,100엔 ~ 1,600엔",
+                locationDisplay: "오사카시 주오구",
+                location: "Osaka"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(1).jpeg?raw=true",
+                name: "기니피그",
+                description: "휘파람 같은 소리로 주인과 대화하며 사회성이 좋아 함께 시간을 보내기 즐거운 친구입니다.",
+                rating: 3.8,
+                like: 432,
+                category: "festival",
+                price: "1인 가격 950엔 ~ 1,400엔",
+                locationDisplay: "교토시 히가시야마구",
+                location: "Kyoto"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(2).jpeg?raw=true",
+                name: "고슴도치",
+                description: "처음엔 낯을 가리지만 친해지면 배를 보여주는 반전 매력을 가진 야행성 동물입니다.",
+                rating: 4.0,
+                like: 615,
+                category: "gallery",
+                price: "1인 가격 1,300엔 ~ 1,900엔",
+                locationDisplay: "나라시 고린초",
+                location: "Nara"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(3).jpeg?raw=true",
+                name: "친칠라",
+                description: "실크처럼 부드러운 털을 가졌으며 영리하고 수명이 길어 오랜 시간 함께할 수 있습니다.",
+                rating: 4.7,
+                like: 328,
+                category: "museum",
+                price: "1인 가격 1,800엔 ~ 2,500엔",
+                locationDisplay: "홋카이도 삿포로시",
+                location: "Hokkaido"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(11).jpeg?raw=true",
+                name: "왕관앵무 화이트페이스",
+                description: "얼굴 전체가 깨끗하고 아름다운 흰색을 띠는 매력적인 변종입니다.",
+                rating: 4.9,
+                like: 951,
+                category: "anime",
+                price: "1인 가격 1,400엔 ~ 2,000엔",
+                locationDisplay: "후쿠오카시 하카타구",
+                location: "Fukuoka"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(5).jpeg?raw=true",
+                name: "카나리아",
+                description: "아름다운 노랫소리로 집안의 분위기를 평화롭게 만들어주는 고운 빛깔의 새입니다.",
+                rating: 3.5,
+                like: 210,
+                category: "sushi-ramen",
+                price: "1인 가격 900엔 ~ 1,350엔",
+                locationDisplay: "오키나와현 나하시",
+                location: "Okinawa"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(6).jpeg?raw=true",
+                name: "거북이",
+                description: "느긋한 움직임으로 마음의 여유를 주며 관리가 비교적 까다롭지 않은 장수의 상징입니다.",
+                rating: 4.1,
+                like: 567,
+                category: "cafe-dessert",
+                price: "1인 가격 1,000엔 ~ 1,500엔",
+                locationDisplay: "도쿄도 미나토구",
+                location: "Tokyo"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(7).jpeg?raw=true",
+                name: "레오파드 게코",
+                description: "웃는 듯한 얼굴 표정과 순한 성격을 가진 파충류 입문용 도마뱀입니다.",
+                rating: 4.6,
+                like: 784,
+                category: "izakaya",
+                price: "1인 가격 2,000엔 ~ 2,800엔",
+                locationDisplay: "오사카시 나니와구",
+                location: "Osaka"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(8).jpeg?raw=true",
+                name: "우파루파",
+                description: "항상 웃고 있는 듯한 신비로운 외모를 가진 수생 동물로 물멍에 최고입니다.",
+                rating: 4.3,
+                like: 642,
+                category: "onsen",
+                price: "1인 가격 1,600엔 ~ 2,300엔",
+                locationDisplay: "하코네정 고라",
+                location: "Hakone"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(9).jpeg?raw=true",
+                name: "구피",
+                description: "화려한 꼬리 지느러미를 흔들며 헤엄치는 모습이 아름답고 번식이 쉽습니다.",
+                rating: 3.9,
+                like: 820,
+                category: "park",
+                price: "1인 가격 850엔 ~ 1,150엔",
+                locationDisplay: "요코하마시 미나토미라이",
+                location: "Yokohama"
+            },
+            {
+                image: "https://github.com/RKneco/image-storage/blob/main/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20(10).jpeg?raw=true",
+                name: "슈가글라이더",
+                description: "주인의 품속으로 날아와 안기는 애교가 많으며 유대감이 형성되면 매우 친밀해집니다.",
+                rating: 4.8,
+                like: 493,
+                category: "hiking",
+                price: "1인 가격 1,700엔 ~ 2,400엔",
+                locationDisplay: "교토시 아라시야마",
+                location: "Kyoto"
+            }
+        ];
+        // html 전송 함수
+        const cardList = document.getElementById("card-list");
+        function renderCards(list) {
+            let changeHtml = "";
+            list.forEach(item => {
+                changeHtml += `
+                    <article class="result-card">
+                        <div class="card-image">
+                            <img src="${item.image}" alt="...">
+                        </div>
+                        <div class="card-content">
+                            <div class="content-head">
+                                <h3 class="card-name">
+                                    ${item.name}
+                                </h3>
+                                <p class="price">
+                                    ${item.price}
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-body-secondary">
+                                        ⭐${item.rating}
+                                    </small>
+                                    <small class="text-body-secondary">
+                                        ❤️${item.like}
+                                    </small>
+                                </p>
+                                <p class="location-display">
+                                    ${item.locationDisplay}
+                                </p>
+                                <p class="description">
+                                    ${item.description}
+                                </p>
+                                <button class="reservation-btn">
+                                    예약하기 >
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            });
+            cardList.innerHTML = changeHtml;
+        }
+        let filteredList = Data;
+        // 별점 순 정렬 이벤트 + html 전송 함수
+        document.getElementById("rating-tab").addEventListener("click", function () {
+            filteredList.sort((a, b) => b.rating - a.rating);
+            renderCards(filteredList);
+        });
+        // 인기 순 정렬 이벤트 + html 전송 함수
+        document.getElementById("popularity-tab").addEventListener("click", function () {
+            filteredList.sort((a, b) => b.like - a.like);
+            renderCards(filteredList);
+        });
+        // 체크박스 필터 이벤트 + html 전송 함수
+        const checkboxes = document.querySelectorAll(".form-check-input"); // querySelectorAll: 이 클래스를 가진 애들 다 이리로 와!
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+                const checkedValues = [];
+                checkboxes.forEach((item) => {
+                    if (item.checked) {
+                        checkedValues.push(item.dataset.category); // push: 리스트 맨 뒤에 새로운 항목을 집어넣는 동작
+                    }
+                });
+                if (checkedValues.length === 0) {
+                    filteredList = Data;
+                } else {
+                    filteredList = Data.filter((item) => {
+                        return checkedValues.includes(item.category);
+                    });
+                }
+                renderCards(filteredList);
+            });
+        });
+        // 검색 함수
+        const searchInput = document.getElementById("search-input");
+        function Search() {
+            const searchInputValue = searchInput.value.toLowerCase();
+            filteredList = Data.filter((item) =>
+                item.name.toLowerCase().includes(searchInputValue)
+            );
+            renderCards(filteredList)
+        };
+        // 검색 버튼 클릭 이벤트 + 검색 함수
+        const searchBtn = document.getElementById("search-btn")
+        searchBtn.addEventListener("click", function () {
+            Search();
+        });
+        // 엔터 키 클릭 이벤트 + 검색 함수
+        searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                Search();
+            }
+        });
+    </script>
+</body>
+
+<footer>
+    <div class="inner">
+        <ul class="menu">
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">위치정보 이용약관</a></li>
+            <li><a href="#">여행상품 이용안내</a></li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">문의하기</a></li>
+        </ul>
+    </div>
+    <div class="info">
+        <span>운영사 : Japan Travel Guide</span>
+        <span>대표자 : 홍길동</span>
+        <span>TEL : 02-0000-0000</span>
+        <span>Email : support@japantravel.com</span>
+    </div>
+    <p class="copyright">© Japan Travel Guide. All Rights Reserved.</p>
+</footer>
+
+</html>
+
+<!--
+제작: 이건우
+도움: 고영인, 이규현
+-->
