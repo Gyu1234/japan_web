@@ -432,31 +432,31 @@
                             aria-labelledby="panels-stay-open-heading-five">
                             <div class="accordion-body">
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Tokyo">
                                         도쿄
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Yokohama">
                                         요코하마
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Hakone">
                                         하코네
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Osaka">
                                         오사카
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Kyoto">
                                         교토
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Nara">
                                         나라
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Hokkaido">
                                         홋카이도
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Fukuoka">
                                         후쿠오카
                                     </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action" data-location="Okinawa">
                                         오키나와
                                     </a>
                                 </div>
@@ -1003,15 +1003,28 @@
                 renderCards(filteredList);
             });
         });
+        // 지역 필터 함수
+        let selectedLocation = "";
+        function filterByLocation(location) {
+            selectedLocation = location;
+            filteredList = Data.filter((item) => {
+                return (
+                    selectedLocation === "" ||
+                    item.location.includes(selectedLocation)
+                );
+            });
+            renderCards(filteredList);
+        }
         // 검색 함수
         const searchInput = document.getElementById("search-input");
+        const searchInputValue = "";
         function Search() {
-            const searchInputValue = searchInput.value.toLowerCase();
+            searchInputValue = searchInput.value.toLowerCase();
             filteredList = Data.filter((item) =>
                 item.name.toLowerCase().includes(searchInputValue)
             );
             renderCards(filteredList)
-        };
+        }
         // 검색 버튼 클릭 이벤트 + 검색 함수
         const searchBtn = document.getElementById("search-btn")
         searchBtn.addEventListener("click", function () {

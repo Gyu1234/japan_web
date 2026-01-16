@@ -5,25 +5,25 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const MainHero = () => {
   const heroImages = [
     {
-      src: 'hero1.jpg', // 경로 앞에 /images/ 를 붙이는 것이 안전합니다 (public 폴더 기준)
+      src: '/images/mainpage/hero/hero1.jpg', // 경로 앞에 /images/ 를 붙이는 것이 안전합니다 (public 폴더 기준)
       alt: '일본 길거리',
       text: '잊지 못할 일본 여행, 지금 계획해보세요!',
       subText: '아름다운 일본의 문화와 자연을 경험하세요'
     },
     {
-      src: 'hero2.jpg',
+      src: '/images/mainpage/hero/hero2.jpg',
       alt: '자연',
       text: '평화로운 자연 속에서 힐링의 시간을',
       subText: '숨겨진 보석 같은 장소들을 발견하세요'
     },
     {
-      src: 'hero3.jpg',
+      src: '/images/mainpage/hero/hero3.jpg',
       alt: '기모노',
       text: '문화가 살아 숨쉬는 곳',
       subText: '일본의 찬란한 과거를 만나보세요'
     },
     {
-      src: 'hero4.jpg',
+      src: '/images/mainpage/hero/hero4.jpg',
       alt: '토리이',
       text: '역사와 전통이 살아 숨 쉬는 곳',
       subText: '일본의 찬란한 과거를 만나보세요'
