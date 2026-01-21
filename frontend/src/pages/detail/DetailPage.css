@@ -1,0 +1,38 @@
+/* ✅ 가로 폭 줄이기 + 가운데 정렬 */
+.carousel-wrap {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* ✅ 캐러셀 세로 높이 조절 */
+.carousel-sm .carousel-item {
+  height: 400px; /* 320px보다 조금 더 시원하게 키웠습니다 */
+  background-color: #f8f9fa;
+}
+
+.carousel-sm .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 꽉 차면서 비율 유지 */
+}
+
+/* ✅ 카드 스타일 보정 */
+.detail-page-wrapper .card {
+  border-radius: 12px;
+}
+
+.detail-page-wrapper dl dt {
+  padding: 10px 0;
+}
+
+.detail-page-wrapper dl dd {
+  padding: 10px 0;
+  margin-bottom: 0;
+}
+
+/* ✅ 좋아요 버튼 애니메이션 */
+.btn-outline-danger:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
