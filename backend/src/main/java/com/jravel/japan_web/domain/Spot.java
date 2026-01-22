@@ -29,6 +29,10 @@ public class Spot {
 
     private String imageUrl;    // 대표 이미지 URL
 
+    private String theme;        // 명소의 테마 (예: 벚꽃 명소, 온천 등)
+
+    private Double rating;      // 사용자 평점 (0.0 ~ 5.0)
+
     // 구글 맵 API 연동을 위한 핵심 데이터
     private Double latitude;    // 위도
     private Double longitude;   // 경도
@@ -39,10 +43,12 @@ public class Spot {
     private Long likeCount = 0L; // 인기 랭킹 카운트 적용
 
     @Builder
-    public Spot(String name, String region, String description, String category,
+    public Spot(String name, String region, String description, String category, String theme, Double rating,
                 String imageUrl, Double latitude, Double longitude, String address) {
         this.name = name;
         this.region = region;
+        this.theme = theme;
+        this.rating = rating;
         this.description = description;
         this.category = category;
         this.imageUrl = imageUrl;
