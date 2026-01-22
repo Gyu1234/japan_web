@@ -24,6 +24,13 @@ public class SpotController {
         return spotService.getFilteredSpots(keyword, category, region);
     }
 
+    @GetMapping("/destination")
+public ResponseEntity<List<SpotDto.Response>> getDestinationTop() {
+    // 아무 조건 없이 무조건 좋아요 전체 랭킹 반환
+    List<SpotDto.Response> response = spotService.getRanking(null); 
+    return ResponseEntity.ok(response);
+    }
+
     // 2. 상세 페이지 조회 (ID 기반)
     @GetMapping("/{id}")
     public ResponseEntity<SpotDto.Response> getDetail(@PathVariable(name = "id") Long id) {

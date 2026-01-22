@@ -38,3 +38,4 @@ logging:
   level:
     com.example.board: DEBUG
     org.hibernate.SQL: DEBUG
+
