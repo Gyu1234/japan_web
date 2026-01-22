@@ -1,7 +1,8 @@
 /* 검색창 배경 섹션 */
 .search-visual-section {
   width: 100%;
-  height: 300px; /* 배경 이미지 높이 */
+  height: 300px;
+  /* 배경 이미지 높이 */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -12,10 +13,13 @@
 .search-overlay {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* 검은색 반투명 막 */
+  background: rgba(0, 0, 0, 0.4);
+  /* 검은색 반투명 막 */
   display: flex;
-  align-items: center; /* 세로 중앙 */
-  justify-content: center; /* 가로 중앙 */
+  align-items: center;
+  /* 세로 중앙 */
+  justify-content: center;
+  /* 가로 중앙 */
 }
 
 /* 검색창 내부 스타일 살짝 수정 */
@@ -27,7 +31,8 @@
 /* Hero Section 설정 */
 .search-hero-section {
   width: 100%;
-  height: 350px; /* 높이 조절 */
+  height: 350px;
+  /* 높이 조절 */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -37,7 +42,7 @@
 .search-overlay {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); 
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +97,8 @@
 
 /* 검색창 너비 타이트하게 조절 */
 .search-bar-container {
-  max-width: 1000px; /* 가로 너비 축소 */
+  max-width: 1000px;
+  /* 가로 너비 축소 */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -113,6 +119,74 @@
 #card-list {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* 카드 사이 간격을 넉넉히 */
+  gap: 30px;
+  /* 카드 사이 간격을 넉넉히 */
   margin-top: 20px;
+}
+
+/* ==============================card============================== */
+.result-card {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s;
+}
+
+.result-card:hover {
+  box-shadow: 0 6px 14px rgba(240, 193, 75, 0.35);
+  border-color: rgba(240, 193, 75, 0.15);
+}
+
+.card-image {
+  flex-shrink: 0;
+  width: 260px;
+  height: 260px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-fit: cover;
+}
+
+.card-content {
+  flex-grow: 1;
+  padding: 15px 20px;
+}
+
+.content-head {
+  /* content-head는 card-content의 내용을 감싸는 용도 */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-head .card-name {
+  flex-basis: calc(100% - 100px);
+}
+
+.content-head .rating {
+  margin-left: auto;
+}
+
+.card-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  color: #333;
+}
+
+.result-card:hover .card-name {
+  color: #f0c14b;
+}
+
+.rating {
+  color: #f0c14b;
+  font-weight: 600;
 }

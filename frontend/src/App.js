@@ -4,6 +4,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/main/MainPage';
 import ListPage from './pages/list_array/ListPage'; // 리스트 페이지 추가
 import DetailPage from './pages/detail/DetailPage';
+// main 카드9개 임포트
+import KantoPage from './pages/list_array/ListPages/KantoPage';
+import TohokuPage from './pages/list_array/ListPages/TohokuPage';
+import HokkaidoPage from './pages/list_array/ListPages/HokkaidoPage';
+import ChugokuPage from './pages/list_array/ListPages/ChugokuPage';
+import KansaiPage from './pages/list_array/ListPages/KansaiPage';
+import KyushuPage from './pages/list_array/ListPages/KyushuPage';
+import ShikokuPage from './pages/list_array/ListPages/ShikokuPage';
+import OkinawaPage from './pages/list_array/ListPages/OkinawaPage';
+import ChubuPage from './pages/list_array/ListPages/ChubuPage';
 // 스타일 임포트
 import './styles/layout/footer.css';
 import './styles/layout/header.css';
@@ -19,8 +29,16 @@ function App() {
       <div className="App">
         <Routes>
           {/*  각 주소(path)에 맞는 페이지를 설정합니다. */}
-          <Route path="/" element={<DetailPage />} />
-          
+          <Route path="/" element={<MainPage />} />
+          <Route path="/kanto" element={<KantoPage />} />
+          <Route path="/tohoku" element={<TohokuPage />} />
+          <Route path="/hokkaido" element={<HokkaidoPage />} />
+          <Route path="/chugoku" element={<ChugokuPage />} />
+          <Route path="/kansai" element={<KansaiPage />} />
+          <Route path="/kyushu" element={<KyushuPage />} />
+          <Route path="/shikoku" element={<ShikokuPage />} />
+          <Route path="/okinawa" element={<OkinawaPage />} />
+          <Route path="/chubu" element={<ChubuPage />} />
           {/* 나중에 검색 페이지를 만드시면 아래 줄의 주석을 푸세요 */}
           {/* <Route path="/destinations" element={<SearchPage />} /> */}
         </Routes>

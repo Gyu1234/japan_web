@@ -1,16 +1,18 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 // 공통 레이아웃
 import Header from '../../components/commons/Header';
 import Footer from '../../components/commons/Footer';
 import SearchBar from '../../components/commons/SearchBar';
-import Sidebar from '../../components/commons/SideBar'; 
+import Sidebar from '../../components/commons/SideBar';
 // 데이터 및 카드 컴포넌트
-import { items } from './list_array'; 
+import { items } from './list_array';
 import ResultCard from './components/ResultCard';
 // 스타일
 import './ListPage.css';
 
-const ListPage = () => {
+const ListPage = ({ region }) => {
+  
   // 에러 방지를 위한 배경 이미지 인라인 스타일
   const heroStyle = {
     // 배경을 약간 어둡게 처리(linear-gradient)해야 검색창이 더 잘 보입니다.

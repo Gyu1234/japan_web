@@ -40,44 +40,47 @@ body {
 
 /* 화살표 공통 스타일 */
 .arrow-btn {
-  position: absolute;
-  z-index: 99 !important; /* 10에서 99로 대폭 상향 (라이브러리 요소보다 위로) */
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  background: rgba(0, 0, 0, 0.4) !important; /* 배경을 어두운 반투명으로 변경 (흰 배경에서도 보이게) */
-  color: #ffffff !important;
-  border: none !important;
-  font-size: 2.5rem !important; /* 크기 약간 키움 */
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  outline: none;
+    position: absolute;
+    z-index: 99 !important;
+    /* 10에서 99로 대폭 상향 (라이브러리 요소보다 위로) */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    /* 배경을 어두운 반투명으로 변경 (흰 배경에서도 보이게) */
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 2.5rem !important;
+    /* 크기 약간 키움 */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    outline: none;
 }
 
 .arrow-btn:hover {
-  background: rgba(0, 0, 0, 0.7) !important;
-  scale: 1.1;
+    background: rgba(0, 0, 0, 0.7) !important;
+    scale: 1.1;
 }
 
 /* 왼쪽 화살표 위치 */
 .left-arrow {
-  left: 30px !important;
+    left: 30px !important;
 }
 
 /* 오른쪽 화살표 위치 */
 .right-arrow {
-  right: 30px !important;
+    right: 30px !important;
 }
 
 /* (추가) 버튼 안의 텍스트 기호가 중앙에 안 올 경우를 대비 */
 .arrow-btn span {
-  line-height: 0;
-  margin-top: -4px; 
+    line-height: 0;
+    margin-top: -4px;
 }
 
 
@@ -86,65 +89,77 @@ body {
 /* frontend/src/components/MainHero.css */
 
 .hero-section {
-  position: relative;
-  width: 100%;
-  overflow: hidden; /* 이미지가 넘치지 않도록 */
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* 이미지가 넘치지 않도록 */
 }
 
 .hero-slide {
-  position: relative;
-  width: 100%;
-  height: 600px; /* 원하는 높이로 조절 */
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* 원하는 높이로 조절 */
 }
 
 .hero-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 이미지가 잘리지 않고 영역을 채우도록 */
-  filter: brightness(60%); /* 이미지 어둡게 하여 텍스트 가독성 높임 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 이미지가 잘리지 않고 영역을 채우도록 */
+    filter: brightness(60%);
+    /* 이미지 어둡게 하여 텍스트 가독성 높임 */
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white; /* 텍스트 색상 하얗게 */
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.2); /* 약간의 투명한 검은색 배경 추가로 텍스트 가독성 UP */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    /* 텍스트 색상 하얗게 */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    /* 약간의 투명한 검은색 배경 추가로 텍스트 가독성 UP */
 }
 
 .hero-text {
-  font-size: 3.5em; /* 텍스트 크기 조절 */
-  font-weight: bold;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 */
+    font-size: 3.5em;
+    /* 텍스트 크기 조절 */
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* 텍스트 그림자 */
 }
 
 .hero-subtext {
-  font-size: 1.8em; /* 서브 텍스트 크기 조절 */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 */
+    font-size: 1.8em;
+    /* 서브 텍스트 크기 조절 */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* 텍스트 그림자 */
 }
 
 /* 캐러셀의 하단 점(인디케이터) 스타일 */
 .carousel .control-dots .dot {
-  background: white; /* 점 색상 하얗게 */
-  opacity: 0.7;
-  box-shadow: none;
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
+    background: white;
+    /* 점 색상 하얗게 */
+    opacity: 0.7;
+    box-shadow: none;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
 }
 
 .carousel .control-dots .dot.selected {
-  background: #007bff; /* 선택된 점은 다른 색상 */
-  transform: scale(1.2);
+    background: #007bff;
+    /* 선택된 점은 다른 색상 */
+    transform: scale(1.2);
 }
 
 /* ==========================================================
@@ -180,7 +195,8 @@ body {
 .card-section,
 .culture-section {
     max-width: 1200px;
-    margin: 80px auto; /* 중앙 정렬 및 상하 여백 */
+    margin: 80px auto;
+    /* 중앙 정렬 및 상하 여백 */
     padding: 0 20px;
 }
 
@@ -241,6 +257,12 @@ body {
     line-height: 1.6;
 }
 
+.travel-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 /* ==========================================================
    FOOD SECTION
 ========================================================== */
@@ -287,7 +309,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
 }
 
 .food-section .item-desc {
@@ -336,51 +358,65 @@ body {
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 40px;
-    font-weight: 700; /* 제목 강조 추가 */
+    font-weight: 700;
+    /* 제목 강조 추가 */
 }
 
 /* 슬라이더 전체를 감싸는 영역 */
 .month-section .carousel-wrapper {
-    padding: 0 60px; /* 좌우 화살표 공간 확보 */
+    padding: 0 60px;
+    /* 좌우 화살표 공간 확보 */
     position: relative;
-    overflow: hidden; /* 넘치는 카드 숨김 */
+    overflow: hidden;
+    /* 넘치는 카드 숨김 */
 }
 
 /* 카드들이 나열되는 트랙 (Flexbox 활용) */
 .month-section .carousel-track {
     display: flex;
-    gap: 20px; /* 카드 사이 간격 */
-    overflow-x: auto; /* 내용이 넘치면 가로 스크롤 허용 (라이브러리 사용 시 hidden으로 변경됨) */
-    padding: 20px 10px; /* 그림자 잘림 방지용 여백 */
-    scroll-behavior: smooth; /* 부드러운 스크롤 */
-    
+    gap: 20px;
+    /* 카드 사이 간격 */
+    overflow-x: auto;
+    /* 내용이 넘치면 가로 스크롤 허용 (라이브러리 사용 시 hidden으로 변경됨) */
+    padding: 20px 10px;
+    /* 그림자 잘림 방지용 여백 */
+    scroll-behavior: smooth;
+    /* 부드러운 스크롤 */
+
     /* 스크롤바 숨기기 (크롬, 사파리 등) */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
+
 .month-section .carousel-track::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 /* --- 개별 카드 스타일 (기존 디자인 유지) --- */
 .month-card {
     /* flex: 0 0 auto; -> 카드가 찌그러지지 않게 고정 */
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
     width: 250px;
     height: 380px;
-    border-radius: 16px; /* 둥근 모서리 조금 더 부드럽게 */
+    border-radius: 16px;
+    /* 둥근 모서리 조금 더 부드럽게 */
     overflow: hidden;
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 조금 더 고급스러운 애니메이션 */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* 조금 더 고급스러운 애니메이션 */
     background-color: #ffffff;
 }
 
 /* 활성화(Active) 혹은 호버(Hover) 시 효과 */
 .month-card.active,
 .month-card:hover {
-    transform: translateY(-10px) scale(1.02); /* 위로 살짝 뜨면서 커짐 */
+    transform: translateY(-10px) scale(1.02);
+    /* 위로 살짝 뜨면서 커짐 */
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     z-index: 2;
 }
@@ -410,8 +446,10 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     padding: 8px 16px;
     border-radius: 20px;
-    background: rgba(0, 0, 0, 0.4); /* 반투명 배경 */
-    backdrop-filter: blur(4px); /* 배경 블러 효과 (모던한 느낌) */
+    background: rgba(0, 0, 0, 0.4);
+    /* 반투명 배경 */
+    backdrop-filter: blur(4px);
+    /* 배경 블러 효과 (모던한 느낌) */
     white-space: nowrap;
 }
 
@@ -428,7 +466,7 @@ body {
     border: none;
     cursor: pointer;
     z-index: 10;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -441,8 +479,13 @@ body {
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-nav-btn.prev { left: 10px; }
-.carousel-nav-btn.next { right: 10px; }
+.carousel-nav-btn.prev {
+    left: 10px;
+}
+
+.carousel-nav-btn.next {
+    right: 10px;
+}
 
 /* 버튼 비활성화 상태 */
 .carousel-nav-btn:disabled {
@@ -456,10 +499,12 @@ body {
     .month-section .carousel-wrapper {
         padding: 0 20px;
     }
+
     .month-card {
         width: 200px;
         height: 300px;
     }
+
     .carousel-nav-btn {
         width: 40px;
         height: 40px;
@@ -509,7 +554,7 @@ body {
 /* 카드 호버 효과 */
 .item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* 설명창 (하단 그라데이션 오버레이) */
@@ -559,12 +604,14 @@ body {
     .month-section .owl-prev {
         left: -5px;
     }
+
     .month-section .owl-next {
         right: -5px;
     }
 }
 
 @media (max-width: 576px) {
+
     /* 모든 카드 그리드 (travel-card, culture-card) */
     .card-grid {
         grid-template-columns: 1fr;

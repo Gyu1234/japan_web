@@ -1,22 +1,26 @@
 import React from 'react';
 
 const ResultCard = ({ data }) => {
-  const { title, image, price, rating, likes, location, description, category, city } = data;
+  const { image, name, rating, likes } = data;
 
   return (
-    <article className="result-card" data-category={category} data-location={city}>
+    <article className="result-card">
       <div className="card-image">
-        <img src={image} alt={title} />
+        <img src={image} alt="..." />
       </div>
       <div className="card-content">
         <div className="content-head">
-          <h3 className="card-name">{title}</h3>
-          <p className="price">{price}</p>
-          <p className="card-text">
-            <small className="text-body-secondary">❤️{likes}</small>
-          </p>
-          <p className="location-display">{location}</p>
-          <p className="description">{description}</p>
+          <h2 className="card-name">
+            {name}
+          </h2>
+          <h4 className="card-text">
+            <small className="text-body-secondary rating">
+              ⭐{rating}
+            </small>
+            <small className="text-body-secondary">
+              ❤️{likes}
+            </small>
+          </h4>
         </div>
       </div>
     </article>
