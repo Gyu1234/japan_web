@@ -1,0 +1,32 @@
+{
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.defaultProfile.windows": null,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    
+    /* 1. 자바 실행 환경:JDK 17으로 설정 */
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "C:\\Users\\dlrbg\\.jdks\\ms-17.0.17",
+            "default": true
+        },
+        {
+            "name": "JavaSE-21",
+            "path": "C:\\Program Files\\Java\\jdk-21"
+        }
+    ],
+
+    /* 2. 자바 홈 설정 (JDK 17 경로로 통일) */
+    "java.jdt.ls.java.home": "C:\\Users\\dlrbg\\.jdks\\ms-17.0.17",
+    "java.import.gradle.java.home": "C:\\Users\\dlrbg\\.jdks\\ms-17.0.17",
+    "terminal.integrated.env.windows": {
+        "JAVA_HOME": "C:\\Users\\dlrbg\\.jdks\\ms-17.0.17",
+        "PATH": "C:\\Users\\dlrbg\\.jdks\\ms-17.0.17\\bin;${env:PATH}"
+    },
+
+    "files.eol": "\n",
+    "editor.minimap.enabled": false,
+    "emmet.variables": {
+        "lang": "ko"
+    }
+}
