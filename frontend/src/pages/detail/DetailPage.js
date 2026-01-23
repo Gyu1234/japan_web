@@ -7,45 +7,44 @@ const DetailPage = () => {
   const [isLiked, setIsLiked] = useState(false);
 
   const restaurantData = {
-    name: "기온 마츠리",
-    description: "천년의 역사를 이어온 교토 최대의 여름 축제",
-    longDescription: "교토를 상징하는 기온 마츠리는 1,100년 이상의 역사를 지닌 일본의 대표적인 여름 축제로, 액운을 물리치고 도시의 안녕을 기원하는 의미를 담고 있습니다. 7월 한 달간 도시 전역이 축제 분위기로 물들며, 특히 거대한 수레인 '야마보코'가 거리를 행진하는 화려한 순행은 축제의 정점이자 놓칠 수 없는 장관입니다.",
+    name: "여기는 디테일 페이지입니다",
+    description: "귀엽고 영리하며, 독립적인 성격과 부드러운 털을 가진 매력적인 반려동물입니다.",
+    longDescription: "고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고",
 
     // ✅ 캡처된 폴더 구조(images/hero)에 맞게 경로 수정
     images: [
-      "/images/mainpage/culture/gion2.jpg",
-      "/images/mainpage/culture/gion3.jpg",
-      "/images/mainpage/culture/gion4.jpg"
+      "/images/list_array/cat.jpg",
+      "/images/list_array/dog.jpg"
     ],
 
     // ✅ 캡처된 폴더 구조(images/history) 및 음식 사진에 맞게 수정
     menus: [
       {
         id: 1,
-        name: "간다 마츠리",
-        price: "관람 무료",
-        img: "/images/mainpage/culture/ganda.jpg",
-        desc: "축제의 하이라이트인 거대 수레 행진입니다."
+        name: "러시안 블루",
+        price: "기모띠",
+        img: "/images/list_array/cat1.jpg",
+        desc: "은은한 회색 털이랑 초록 눈, 조용하고 신중한 타입입니다."
       },
       {
         id: 2,
-        name: "텐진 마츠리",
-        price: "관람 무료",
-        img: "/images/mainpage/culture/tenzin.jpg",
-        desc: "축제 전야제인 밤의 등불 축제입니다."
+        name: "코리안 숏헤어",
+        price: "기모띠띠",
+        img: "/images/list_array/cat2.jpg",
+        desc: "성격 스펙트럼 넓고 사람 잘 따르는 현실 친구 같은 고양이입니다."
       },
       {
         id: 3,
-        name: "오도리 마츠리",
-        price: "관람 무료",
-        img: "/images/mainpage/culture/odori.jpg",
-        desc: "일본 북해도의 상징적인 축제입니다"
+        name: "브리티시 숏헤어",
+        price: "기모띠띠띠",
+        img: "/images/list_array/cat3.jpg",
+        desc: "통통한 얼굴에 짧은 털, 느긋하고 안정적인 성격입니다."
       },
     ],
     info: {
-      address: "교토부 교토시 히가시야마구 (기온 거리 일대)",
-      phone: "075-561-6155",
-      hours: "7월 1일 ~ 7월 31일 (매년)",
+      address: "비밀",
+      phone: "나이쇼",
+      hours: "시크릿",
     }
   };
 
@@ -106,7 +105,7 @@ const DetailPage = () => {
           <div className="col-lg-4">
             <div className="sticky-top" style={{ top: '100px', zIndex: '10' }}>
               <div className="card border-0 shadow-sm p-4 bg-white rounded-4 border">
-                <h4 className="fw-bold mb-4">축제 상세 정보</h4>
+                <h4 className="fw-bold mb-4">고양이 상세 정보</h4>
                 <div className="mb-3">
                   <label className="text-muted small d-block mb-1">장소</label>
                   <span className="fw-medium">{restaurantData.info.address}</span>
