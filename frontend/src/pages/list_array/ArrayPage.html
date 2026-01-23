@@ -1013,22 +1013,21 @@
             filteredList.sort((a, b) => b.like - a.like);
             renderCards(filteredList);
         });
-        // ============================================================이 아래로 전부 수정되었습니다============================================================
         const checkboxes = document.querySelectorAll(".form-check-input"); // querySelectorAll: 이 클래스를 가진 애들 다 이리로 와!
         let selectedLocation = "";
         const searchInput = document.getElementById("search-input");
         // 필터 함수(html 전송 함수 내장)
-        function filtering() {
-            const categoryValues = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.dataset.category);
-            const searchValue = searchInput.value.toLowerCase();
-            const filteredList = Data.filter((item) => {
-                const categoryFilter = (categoryValues.length === 0 || categoryValues.includes(item.category));
-                const locationFilter = (selectedLocation === "" || selectedLocation.includes(item.location));
-                const searchFilter = item.name.toLowerCase().includes(searchValue);
-                return categoryFilter && locationFilter && searchFilter;
-            });
-            renderCards(filteredList);
-        }
+            function filtering() {
+                const categoryValues = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.dataset.category);
+                const searchValue = searchInput.value.toLowerCase();
+                const filteredList = Data.filter((item) => {
+                    const categoryFilter = (categoryValues.length === 0 || categoryValues.includes(item.category));
+                    const locationFilter = (selectedLocation === "" || selectedLocation.includes(item.location));
+                    const searchFilter = item.name.toLowerCase().includes(searchValue);
+                    return categoryFilter && locationFilter && searchFilter;
+                });
+                renderCards(filteredList);
+            }
         // 체크박스 감지 + 필터 함수
         checkboxes.forEach((checkbox) => {
             checkbox.addEventListener("change", () => {

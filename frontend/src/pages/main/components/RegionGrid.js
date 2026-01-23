@@ -74,8 +74,8 @@ const RegionGrid = () => {
       <div className="card-grid">
         {/* 중괄호 {} 안에서 map을 실행하여 9개 카드를 자동 생성합니다. */}
         {regions.map((region) => (
-          <Link to={`/${region.slug}`} key={region.id} className="travel-card-link">
-            <div className="travel-card">
+          <div className="travel-card" key={region.id}>
+            <Link to={`/${region.slug}`} className="travel-card-link">
               <div className="card-image">
                 <img src={region.img} alt={region.name} />
               </div>
@@ -83,10 +83,10 @@ const RegionGrid = () => {
                 <h3>{region.name}</h3>
                 <p>{region.desc}</p>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
           </div>
+        ))}
+      </div>
     </section>
   );
 };

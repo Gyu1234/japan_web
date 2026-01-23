@@ -5,15 +5,15 @@ const ResultCard = ({ data }) => {
 
   return (
     <article className="result-card">
-      <div className="card-image">
+      <div className="result-card-image">
         <img src={image} alt="..." />
       </div>
-      <div className="card-content">
-        <div className="content-head">
-          <h2 className="card-name">
+      <div className="result-card-content">
+        <div className="result-content-head">
+          <h2 className="result-card-name">
             {name}
           </h2>
-          <h4 className="card-text">
+          <h4>
             <small className="text-body-secondary rating">
               ⭐{rating}
             </small>
