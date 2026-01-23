@@ -33,7 +33,7 @@ function App() {
       <div className="App">
         <Routes>
           {/*  각 주소(path)에 맞는 페이지를 설정합니다. */}
-          <Route path="/" element={<DetailPage />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/kanto" element={<KantoPage />} />
           <Route path="/tohoku" element={<TohokuPage />} />
           <Route path="/hokkaido" element={<HokkaidoPage />} />
