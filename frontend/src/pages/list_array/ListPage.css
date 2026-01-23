@@ -125,6 +125,12 @@
 }
 
 /* ==============================card============================== */
+.result-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .result-card {
   display: flex;
   align-items: stretch;
