@@ -6,42 +6,60 @@ import './DetailPage.css';
 const DetailPage = () => {
   const [isLiked, setIsLiked] = useState(false);
 
-  // 나중에는 이 데이터를 DB(API)에서 받아오게 됩니다.
   const restaurantData = {
-    name: "스키야바시지로",
-    description: "정통 스시 오마카세",
-    longDescription: "스키야바시 지로는 도쿄를 대표하는 고급 스시 전문점으로, 장인의 섬세한 손맛과 재료의 맛을 극대화한 오마카세 코스로 잘 알려져 있습니다. 좌석 수가 적어 조용하고 집중도 높은 분위기에서 식사를 즐길 수 있으며, 사전 예약이 사실상 필수입니다.",
+    name: "기온 마츠리",
+    description: "천년의 역사를 이어온 교토 최대의 여름 축제",
+    longDescription: "교토를 상징하는 기온 마츠리는 1,100년 이상의 역사를 지닌 일본의 대표적인 여름 축제로, 액운을 물리치고 도시의 안녕을 기원하는 의미를 담고 있습니다. 7월 한 달간 도시 전역이 축제 분위기로 물들며, 특히 거대한 수레인 '야마보코'가 거리를 행진하는 화려한 순행은 축제의 정점이자 놓칠 수 없는 장관입니다.",
+
+    // ✅ 캡처된 폴더 구조(images/hero)에 맞게 경로 수정
     images: [
-      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy0XVjg7gyUuhqw71Vcem3Mp847qP8ewF4VxNRz8OcWWNmBC5QuScNV8xsnQmVK9hGTIlmg9K_7RartVvcoKSK4uZZ9t0JjCXAbS-Dd6driGqHFwOeHkmLxPeiOGq9AVZoCSysM=w243-h304-n-k-no-nu",
-      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyjfoKaGNVIwe7BLGaASFRUZyjJu0zR_3fWuneXpyKJk9zH4-yA4W_bEtcqJ9zSf446Oy4h5fsOISmpWzIRzT_Xq2xsEbL01nLeHsk15YDQb79CiMx3Znt0hJTEVJypjJeEHC-sDcTeekcM=s1360-w1360-h1020-rw",
-      "https://static.wixstatic.com/media/01343f_d04b959d985545c985a5e3cbaf4c1289~mv2.jpg/v1/fill/w_466,h_284,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11_%E3%81%9F%E3%81%93.jpg",
+      "/images/mainpage/culture/gion2.jpg",
+      "/images/mainpage/culture/gion3.jpg",
+      "/images/mainpage/culture/gion4.jpg"
     ],
+
+    // ✅ 캡처된 폴더 구조(images/history) 및 음식 사진에 맞게 수정
     menus: [
-      { id: 1, name: "오마카세 코스", price: "가격 변동", img: "https://i3.ruliweb.com/img/20/05/07/171edfdd70b9c38.jpg", desc: "계절 재료로 구성되는 코스입니다." },
-      { id: 2, name: "참치 초밥", price: "코스 포함", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfkqpe9pmavUWAraA7-OfeiabvqQvRst0O0A&s", desc: "부위별로 다른 맛의 참치 초밥" },
+      {
+        id: 1,
+        name: "도쿄 마츠리",
+        price: "관람 무료",
+        img: "/images/mainpage/culture/ganda.jpg",
+        desc: "축제의 하이라이트인 거대 수레 행진입니다."
+      },
+      {
+        id: 2,
+        name: "요이야마",
+        price: "관람 무료",
+        img: "/images/history/huzi.jpg",
+        desc: "축제 전야제인 밤의 등불 축제입니다."
+      },
+      {
+        id: 3,
+        name: "전통 먹거리",
+        price: "메뉴별 상이",
+        img: "/images/history/jinja.jpg",
+        desc: "축제 기간에만 맛볼 수 있는 다양한 길거리 음식입니다."
+      },
     ],
     info: {
-      address: "東京都中央区銀座4-2-15　塚本総業ビルB1階",
-      phone: "03-3535-3600",
-      hours: "11:30–14:00 / 17:30–20:30",
-      holiday: "일요일, 공휴일 등",
-      seats: "10석",
+      address: "교토부 교토시 히가시야마구 (기온 거리 일대)",
+      phone: "075-561-6155",
+      hours: "7월 1일 ~ 7월 31일 (매년)",
     }
   };
 
   return (
-    <div className="detail-page">
+    <div className="detail-page-wrapper">
       <Header />
-      
-      <main className="container my-5">
-        <h1 className="h2 mb-4 fw-bold">{restaurantData.name}</h1>
 
-        {/* 1. 캐러셀 영역 (부트스트랩 클래스 활용) */}
-        <div id="detailCarousel" className="carousel slide mb-4 shadow" data-bs-ride="carousel">
+      {/* 1. 상단 와이드 캐러셀 */}
+      <section className="main-visual">
+        <div id="detailCarousel" className="carousel slide shadow" data-bs-ride="carousel">
           <div className="carousel-inner">
             {restaurantData.images.map((img, index) => (
               <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                <img src={img} className="d-block w-100 detail-carousel-img" alt="매장 이미지" />
+                <img src={img} className="d-block w-100 main-carousel-img" alt="축제 전경" />
               </div>
             ))}
           </div>
@@ -52,59 +70,65 @@ const DetailPage = () => {
             <span className="carousel-control-next-icon"></span>
           </button>
         </div>
+      </section>
 
-        {/* 2. 설명 카드 */}
-        <div className="card shadow-sm mb-4 border-0">
-          <div className="card-body">
-            <h5 className="text-primary fw-bold">{restaurantData.description}</h5>
-            <p className="card-text text-secondary">{restaurantData.longDescription}</p>
-          </div>
-        </div>
+      {/* 2. 본문 컨테이너 */}
+      <main className="container py-5">
+        <div className="row g-5">
+          {/* 왼쪽 컬럼 */}
+          <div className="col-lg-8">
+            <div className="mb-5">
+              <h1 className="display-4 fw-bold mb-3">{restaurantData.name}</h1>
+              <p className="lead text-primary fw-bold">{restaurantData.description}</p>
+              <p className="text-secondary fs-5 lh-base">{restaurantData.longDescription}</p>
+            </div>
 
-        {/* 3. 대표 메뉴 섹션 */}
-        <h3 className="h5 mb-3 fw-bold">대표 메뉴</h3>
-        <div className="row g-3 mb-5">
-          {restaurantData.menus.map(menu => (
-            <div key={menu.id} className="col-12 col-md-4">
-              <div className="card h-100 border-0 shadow-sm">
-                <img src={menu.img} className="card-img-top" alt={menu.name} style={{height: '200px', objectFit: 'cover'}} />
-                <div className="card-body">
-                  <h6 className="fw-bold">{menu.name}</h6>
-                  <p className="small text-muted">{menu.desc}</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <span className="badge bg-dark">추천</span>
-                    <span className="fw-bold text-danger">{menu.price}</span>
+            <hr className="my-5" />
+
+            <h3 className="fw-bold mb-4">주요 볼거리</h3>
+            <div className="row g-4">
+              {restaurantData.menus.map(menu => (
+                <div key={menu.id} className="col-md-4">
+                  <div className="card h-100 border-0 shadow-sm menu-card">
+                    <img src={menu.img} className="card-img-top menu-img" alt={menu.name} />
+                    <div className="card-body p-3">
+                      <h5 className="fw-bold fs-6 mb-1">{menu.name}</h5>
+                      <p className="small text-muted mb-2">{menu.desc}</p>
+                      <p className="text-danger fw-bold mb-0 small">{menu.price}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* 4. 세부 정보 섹션 */}
-        <div className="card shadow-sm border-0 mb-5">
-          <div className="card-body">
-            <h3 className="h5 mb-4 fw-bold">상세 정보</h3>
-            <dl className="row mb-0">
-              <dt className="col-sm-3 text-muted">주소</dt>
-              <dd className="col-sm-9">{restaurantData.info.address}</dd>
-              <hr />
-              <dt className="col-sm-3 text-muted">전화번호</dt>
-              <dd className="col-sm-9">{restaurantData.info.phone}</dd>
-              <hr />
-              <dt className="col-sm-3 text-muted">영업시간</dt>
-              <dd className="col-sm-9">{restaurantData.info.hours}</dd>
-            </dl>
-            
-            {/* 좋아요 버튼 */}
-            <div className="text-center mt-4">
-              <button 
-                className={`btn ${isLiked ? 'btn-danger' : 'btn-outline-danger'} rounded-pill px-4`}
-                onClick={() => setIsLiked(!isLiked)}
-              >
-                <i className={`bi ${isLiked ? 'bi-heart-fill' : 'bi-heart'} me-2`}></i>
-                {isLiked ? '좋아요 취소' : '가보고 싶어요'}
-              </button>
+          {/* 오른쪽 사이드바 */}
+          <div className="col-lg-4">
+            <div className="sticky-top" style={{ top: '100px', zIndex: '10' }}>
+              <div className="card border-0 shadow-sm p-4 bg-white rounded-4 border">
+                <h4 className="fw-bold mb-4">축제 상세 정보</h4>
+                <div className="mb-3">
+                  <label className="text-muted small d-block mb-1">장소</label>
+                  <span className="fw-medium">{restaurantData.info.address}</span>
+                </div>
+                <hr className="my-3 opacity-10" />
+                <div className="mb-3">
+                  <label className="text-muted small d-block mb-1">문의처</label>
+                  <span className="fw-bold text-dark">{restaurantData.info.phone}</span>
+                </div>
+                <hr className="my-3 opacity-10" />
+                <div className="mb-4">
+                  <label className="text-muted small d-block mb-1">기간</label>
+                  <span className="badge bg-warning text-dark fs-6">{restaurantData.info.hours}</span>
+                </div>
+                <button
+                  className={`btn ${isLiked ? 'btn-danger' : 'btn-outline-danger'} w-100 py-3 rounded-pill fw-bold transition-all`}
+                  onClick={() => setIsLiked(!isLiked)}
+                >
+                  <i className={`bi ${isLiked ? 'bi-heart-fill' : 'bi-heart'} me-2`}></i>
+                  {isLiked ? '좋아요 취소' : '가보고 싶어요'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
