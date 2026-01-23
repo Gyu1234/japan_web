@@ -12,7 +12,13 @@ import ResultCard from './components/ResultCard';
 import './ListPage.css';
 
 const ListPage = ({ region }) => {
-  
+  // 백엔드 데이터 요청
+  //const [items, setItems] = useState([]);
+  //useEffect(() => {
+  //  fetch(`/api/places?region=${region}`)
+  //    .then(res => res.json())
+  //    .then(data => setItems(data));
+  //}, [region]);
   // 에러 방지를 위한 배경 이미지 인라인 스타일
   const heroStyle = {
     // 배경을 약간 어둡게 처리(linear-gradient)해야 검색창이 더 잘 보입니다.
@@ -23,7 +29,8 @@ const ListPage = ({ region }) => {
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundImage: 'url(/images/list_array/cat.jpg)'
   };
 
   return (
@@ -56,7 +63,7 @@ const ListPage = ({ region }) => {
             <div className="list-header mb-4 d-flex justify-content-between align-items-end">
               <h4 className="m-0">총 <strong>{items.length}</strong>개의 결과가 있습니다.</h4>
               <div className="sort-options text-muted small">
-                추천순 | 최신순 | 별점순
+                추천순 | 별점순
               </div>
             </div>
 

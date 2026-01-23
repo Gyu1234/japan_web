@@ -5,6 +5,7 @@ export const items = [
     name: "도쿄 고양이 카페",
     rating: "4.8",
     likes: "120",
+    slug: "cat"
   },
   {
     id: 2,
@@ -12,5 +13,6 @@ export const items = [
     name: "오사카 시바견 파크",
     rating: "4.9",
     likes: "350",
+    slug: "dog"
   }
 ];
