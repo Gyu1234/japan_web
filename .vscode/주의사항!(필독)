@@ -1,5 +1,0 @@
-사진 경로를 넣을 때 C:\Users\... 같은 내 컴퓨터 경로가 아니라, /images/sample.jpg처럼 상대 경로로 넣으세요!
-
-매번 팀장이 git pull 하라고 할 때 해주세요!
-
-.gitignore 파일에 .vscode/주의사항!(필독) 추가해 주세요!
