@@ -17,7 +17,7 @@ public class SpotService {
 
     private final SpotRepository spotRepository;
 
-    // 1. 통합 검색: 이름, 카테고리뿐만 아니라 '지역'까지 뒤지도록 수정
+    // 1. 통합 검색
     public List<SpotDto.Response> search(String keyword) {
         return spotRepository.findByNameContainingOrCategoryContainingOrRegionContaining(keyword, keyword, keyword)
                 .stream()
@@ -25,66 +25,57 @@ public class SpotService {
                 .collect(Collectors.toList());
     }
 
-    // 2. 좋아요 기능: 변경 감지(Dirty Checking)를 통해 DB에 자동 반영
+    // 2. 좋아요 기능 (Dirty Checking 반영)
     @Transactional
     public void addLike(Long id) {
         Spot spot = spotRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 장소가 없습니다. id=" + id));
-
         spot.upLike();
     }
 
-    // 3. 랭킹 조회 기능 추가: 인기 리스트 (지역별 혹은 전체)
+    // 3. 랭킹/지역별 리스트 조회 (중요!)
     public List<SpotDto.Response> getRanking(String region) {
         List<Spot> spots;
-        if (region == null || region.isEmpty()) {
-            spots = spotRepository.findAllByOrderByLikeCountDesc(); // 전체 랭킹
+        // region이 없거나 'all'이면 전체 랭킹, 있으면 지역 필터링
+        if (region == null || region.isEmpty() || region.equalsIgnoreCase("all")) {
+            spots = spotRepository.findAllByOrderByLikeCountDesc();
         } else {
-            spots = spotRepository.findByRegionOrderByLikeCountDesc(region); // 지역별 랭킹
+            spots = spotRepository.findByRegionOrderByLikeCountDesc(region);
         }
         return spots.stream()
                 .map(SpotDto.Response::new)
                 .collect(Collectors.toList());
     }
 
-    // 상세 페이지 조회를 위한 메서드
+    // 4. 상세 정보
     public SpotDto.Response getSpotDetail(Long id) {
         Spot spot = spotRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 장소가 존재하지 않습니다. id=" + id));
-
-        return new SpotDto.Response(spot); // 엔티티를 DTO로 변환하여 반환
+        return new SpotDto.Response(spot);
     }
-    // 필터링된 명소 목록 조회
+
+    // 5. 복합 필터링
     public List<SpotDto.Response> getFilteredSpots(String keyword, String category, String region) {
         List<Spot> spots;
-
         boolean isKeywordEmpty = (keyword == null || keyword.isEmpty());
         boolean isCategoryEmpty = (category == null || category.isEmpty());
         boolean isRegionEmpty = (region == null || region.isEmpty());
 
         if (!isKeywordEmpty && isCategoryEmpty && isRegionEmpty) {
-            // 키워드만 있는 경우
             spots = spotRepository.findByNameContaining(keyword);
         } else if (isKeywordEmpty && !isCategoryEmpty && isRegionEmpty) {
-            // 카테고리만 있는 경우
             spots = spotRepository.findByCategory(category);
         } else if (isKeywordEmpty && isCategoryEmpty && !isRegionEmpty) {
-            // 지역만 있는 경우
             spots = spotRepository.findByRegion(region);
         } else if (isKeywordEmpty && !isCategoryEmpty && !isRegionEmpty) {
-            // 카테고리와 지역이 있는 경우
             spots = spotRepository.findByRegionAndCategory(region, category);
         } else {
-            // 그 외의 조합은 통합 검색으로 처리
             spots = spotRepository.findByNameContainingOrCategoryContainingOrRegionContaining(
                     isKeywordEmpty ? "" : keyword,
                     isCategoryEmpty ? "" : category,
                     isRegionEmpty ? "" : region
             );
         }
-
-        return spots.stream()
-                .map(SpotDto.Response::new)
-                .collect(Collectors.toList());
+        return spots.stream().map(SpotDto.Response::new).collect(Collectors.toList());
     }
 }
