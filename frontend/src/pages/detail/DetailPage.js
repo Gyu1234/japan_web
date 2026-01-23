@@ -22,24 +22,24 @@ const DetailPage = () => {
     menus: [
       {
         id: 1,
-        name: "도쿄 마츠리",
+        name: "간다 마츠리",
         price: "관람 무료",
         img: "/images/mainpage/culture/ganda.jpg",
         desc: "축제의 하이라이트인 거대 수레 행진입니다."
       },
       {
         id: 2,
-        name: "요이야마",
+        name: "텐진 마츠리",
         price: "관람 무료",
-        img: "/images/history/huzi.jpg",
+        img: "/images/mainpage/culture/tenzin.jpg",
         desc: "축제 전야제인 밤의 등불 축제입니다."
       },
       {
         id: 3,
-        name: "전통 먹거리",
-        price: "메뉴별 상이",
-        img: "/images/history/jinja.jpg",
-        desc: "축제 기간에만 맛볼 수 있는 다양한 길거리 음식입니다."
+        name: "오도리 마츠리",
+        price: "관람 무료",
+        img: "/images/mainpage/culture/odori.jpg",
+        desc: "일본 북해도의 상징적인 축제입니다"
       },
     ],
     info: {
