@@ -17,7 +17,29 @@
   object-fit: cover; /* 이미지가 꽉 차면서 비율 유지 */
 }
 
+.menu-desc {
+    height: 50px;
+}
+
+.menu-card-image {
+    width: 100%;
+    height: 220px;
+    background-color: #e5e5e5;
+}
+
+.menu-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 /* ✅ 카드 스타일 보정 */
+.detail-card {
+  top: -80px;
+  margin-top: 50px
+}
+
 .detail-page-wrapper .card {
   border-radius: 12px;
 }
