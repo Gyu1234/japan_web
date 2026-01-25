@@ -1,62 +1,37 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import Header from '../../components/commons/Header';
 import Footer from '../../components/commons/Footer';
 import './DetailPage.css';
 
-const DetailPage = () => {
+const DetailPage = ({ region }) => {
   const [isLiked, setIsLiked] = useState(false);
-
-  const restaurantData = {
-    name: "여기는 디테일 페이지입니다",
-    description: "귀엽고 영리하며, 독립적인 성격과 부드러운 털을 가진 매력적인 반려동물입니다.",
-    longDescription: "고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고고양이최고",
-
-    // ✅ 캡처된 폴더 구조(images/hero)에 맞게 경로 수정
-    images: [
-      "/images/list_array/cat.jpg",
-      "/images/list_array/dog.jpg"
-    ],
-
-    // ✅ 캡처된 폴더 구조(images/history) 및 음식 사진에 맞게 수정
-    menus: [
-      {
-        id: 1,
-        name: "러시안 블루",
-        price: "기모띠",
-        img: "/images/list_array/cat1.jpg",
-        desc: "은은한 회색 털이랑 초록 눈, 조용하고 신중한 타입입니다."
-      },
-      {
-        id: 2,
-        name: "코리안 숏헤어",
-        price: "기모띠띠",
-        img: "/images/list_array/cat2.jpg",
-        desc: "성격 스펙트럼 넓고 사람 잘 따르는 현실 친구 같은 고양이입니다."
-      },
-      {
-        id: 3,
-        name: "브리티시 숏헤어",
-        price: "기모띠띠띠",
-        img: "/images/list_array/cat3.jpg",
-        desc: "통통한 얼굴에 짧은 털, 느긋하고 안정적인 성격입니다."
-      },
-    ],
-    info: {
-      address: "비밀",
-      phone: "나이쇼",
-      hours: "시크릿",
-    }
+  const detailLabels = {
+    location: "📍 위치",
+    site: "🔗 공식 사이트",
+    period: "📅 기간",
+    era: "🕰 시대",
+    form: "🎨 형식",
+    theme: "✨ 주제",
+    duration: "⏱ 소요 시간",
+    price: "💰 체험 비용",
+    reservation: "📝 예약",
+    year: "🏗 완공 연도",
+    architect: "👤 건축가"
   };
-
+  const detailClasses = [
+    'fw-medium',
+    'fw-bold text-dark',
+    'badge bg-warning text-dark fs-6'
+  ];
   return (
     <div className="detail-page-wrapper">
       <Header />
-
-      {/* 1. 상단 와이드 캐러셀 */}
+      {/* Hero Section */}
       <section className="main-visual">
         <div id="detailCarousel" className="carousel slide shadow" data-bs-ride="carousel">
           <div className="carousel-inner">
-            {restaurantData.images.map((img, index) => (
+            {region.images.map((img, index) => (
               <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
                 <img src={img} className="d-block w-100 main-carousel-img" alt="축제 전경" />
               </div>
@@ -70,56 +45,51 @@ const DetailPage = () => {
           </button>
         </div>
       </section>
-
-      {/* 2. 본문 컨테이너 */}
+      {/* Content Container  */}
       <main className="container py-5">
         <div className="row g-5">
-          {/* 왼쪽 컬럼 */}
+          {/* Main Column */}
           <div className="col-lg-8">
             <div className="mb-5">
-              <h1 className="display-4 fw-bold mb-3">{restaurantData.name}</h1>
-              <p className="lead text-primary fw-bold">{restaurantData.description}</p>
-              <p className="text-secondary fs-5 lh-base">{restaurantData.longDescription}</p>
+              <h1 className="display-4 fw-bold mb-3">{region.name}</h1>
+              <p className="lead text-primary fw-bold">{region.description}</p>
+              <p className="text-secondary fs-5 lh-base" style={{ whiteSpace: "pre-wrap" }}>{region.longDescription}</p>
             </div>
-
             <hr className="my-5" />
-
             <h3 className="fw-bold mb-4">주요 볼거리</h3>
             <div className="row g-4">
-              {restaurantData.menus.map(menu => (
+              {region.menus.map(menu => (
                 <div key={menu.id} className="col-md-4">
-                  <div className="card h-100 border-0 shadow-sm menu-card">
-                    <img src={menu.img} className="card-img-top menu-img" alt={menu.name} />
-                    <div className="card-body p-3">
-                      <h5 className="fw-bold fs-6 mb-1">{menu.name}</h5>
-                      <p className="small text-muted mb-2">{menu.desc}</p>
-                      <p className="text-danger fw-bold mb-0 small">{menu.price}</p>
+                  <Link to={`/${menu.slug}`} className="travel-card-link">
+                    <div className="card h-100 border-0 shadow-sm">
+                      <div className="menu-card-image">
+                        <img src={menu.img} className="card-img-top" alt={menu.name} />
+                      </div>
+                      <div className="card-body p-3">
+                        <h5 className="fw-bold fs-6 mb-1">{menu.name}</h5>
+                        <p className="small text-muted mb-2 menu-desc">{menu.desc}</p>
+                        <p className="text-danger fw-bold mb-0 small">{menu.extra}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* 오른쪽 사이드바 */}
+          {/* Sidebar */}
           <div className="col-lg-4">
             <div className="sticky-top" style={{ top: '100px', zIndex: '10' }}>
-              <div className="card border-0 shadow-sm p-4 bg-white rounded-4 border">
-                <h4 className="fw-bold mb-4">고양이 상세 정보</h4>
-                <div className="mb-3">
-                  <label className="text-muted small d-block mb-1">장소</label>
-                  <span className="fw-medium">{restaurantData.info.address}</span>
-                </div>
-                <hr className="my-3 opacity-10" />
-                <div className="mb-3">
-                  <label className="text-muted small d-block mb-1">문의처</label>
-                  <span className="fw-bold text-dark">{restaurantData.info.phone}</span>
-                </div>
-                <hr className="my-3 opacity-10" />
-                <div className="mb-4">
-                  <label className="text-muted small d-block mb-1">기간</label>
-                  <span className="badge bg-warning text-dark fs-6">{restaurantData.info.hours}</span>
-                </div>
+              <div className="card border-0 shadow-sm p-4 bg-white rounded-4 border detail-card">
+                <h4 className="fw-bold mb-4">{region.category} 상세 정보</h4>
+                {Object.entries(region.details).map(([key, value], index) => (
+                  <div className="mb-3" key={key}>
+                    <label className="text-muted small d-block mb-1">{detailLabels[key]}</label>
+                    <span className={detailClasses[index]}>
+                      {key === "site" ? <a href={value}>{value}</a> : value}
+                    </span>
+                    {[0, 1].includes(index) && <hr className="my-3 opacity-10" />}
+                  </div>
+                ))}
                 <button
                   className={`btn ${isLiked ? 'btn-danger' : 'btn-outline-danger'} w-100 py-3 rounded-pill fw-bold transition-all`}
                   onClick={() => setIsLiked(!isLiked)}
@@ -132,7 +102,6 @@ const DetailPage = () => {
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );

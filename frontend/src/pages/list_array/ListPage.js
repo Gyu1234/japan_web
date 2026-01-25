@@ -11,7 +11,7 @@ import ResultCard from './components/ResultCard';
 // 스타일
 import './ListPage.css';
 
-const ListPage = ({ region }) => {
+const ListPage = ({region}) => {
   // 백엔드 데이터 요청
   //const [items, setItems] = useState([]);
   //useEffect(() => {
