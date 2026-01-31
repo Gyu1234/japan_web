@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "노(能)·교겐(狂言)",
     images: [
-        "/images/detailpage/arts/noh.jpg"
+        "/images/detailpage/arts/noh.jpg",
+        "/images/detailpage/arts/noh2.jpg",
+        "/images/detailpage/arts/noh3.jpg"
     ],
     description: "가면 뒤에 숨겨진 깊은 감정을 표현하는 신비로운 가면극입니다.",
     longDescription: "노와 교겐은 함께 발전했지만 매우 다른 특성을 가지고 있습니다. 노는 상징적인 연극으로, 난해한 미적 분위기 속에서 의식과 사고에 초점을 맞춘 작품입니다. 반면 교겐은 주로 사람들을 웃기는 데 초점을 맞춘 희극적 성격이 강합니다.",

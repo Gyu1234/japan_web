@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "일본 다도 문화",
     images: [
-        "/images/detailpage/tradition/tea.jpg"
+        "/images/detailpage/tradition/tea.jpg",
+        "/images/detailpage/tradition/tea2.jpg",
+        "/images/detailpage/tradition/tea3.jpg"
     ],
     description: "정성과 예법으로 마음을 나누는 일본의 다도 문화입니다.",
     longDescription: "다도는 향 감상(향도), 꽃꽂이(화도)와 함께 일본의 고전적인 세련미가 돋보이는 3대 예술의 하나로 꼽힙니다. 다도의 역사는 815년 선종으로 거슬러 올라갑니다. 그 해 에이추 선사가 중국에서 돌아왔습니다. 당시 중국은 이미 1,000년 이상 차를 즐겨온 곳이었습니다. 선사는 당시 일본의 사가 천황을 위해 직접 준비한 센차를 바쳤습니다. 이에 깊은 인상을 받은 천황은 서일본 긴키 지역에 차 재배지를 만들 것을 명했습니다. 뒤따라 귀족들이 차를 마시기 시작했습니다. 그러나 차 문화는 12세기가 되어서야 본격적으로 퍼지기 시작했습니다.",

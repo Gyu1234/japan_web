@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "기모노 문화",
     images: [
-        "/images/detailpage/tradition/kimono.jpg"
+        "/images/detailpage/tradition/kimono.jpg",
+        "/images/detailpage/tradition/kimono2.jpg",
+        "/images/detailpage/tradition/kimono3.jpg"
     ],
     description: "일본의 사계절과 섬세한 미학을 담은 전통 의상입니다.",
     longDescription: "기모노(着物)는 '입는 것'이라는 뜻의 일본 전통 의상으로, 직선 재단된 천을 연결하여 오비(허리띠)로 고정하는 방식이 특징입니다. 현대에는 성인식, 결혼식 등 특별한 행사에 주로 입으며, 신분과 격식에 따라 종류가 나뉩니다. 최근에는 레트로 풍의 기모노를 현대적으로 재해석하여 젊은 층 사이에서 다시 인기를 얻고 있습니다.",

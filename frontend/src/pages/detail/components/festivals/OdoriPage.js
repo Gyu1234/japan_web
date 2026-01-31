@@ -3,10 +3,12 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "오도리 마츠리",
     images: [
-        "/images/detailpage/festivals/odori.jpg"
+        "/images/detailpage/festivals/odori.jpg",
+        "/images/detailpage/festivals/odori2.jpg",
+        "/images/detailpage/festivals/odori3.jpg"
     ],
     description: "일본 북해도의 상징적인 축제입니다",
-    longDescription: "설명",
+    longDescription: "매년 8월 12일~15일 도쿠시마현에서 열리는 400년 전통의 일본 최대 춤 축제로, 100만 명 이상의 인파가 찾는 여름 대표 마츠리입니다. '춤추는 바보와 보는 바보, 같은 바보라면 춤추는 게 이득'이라는 구절로 유명하며, '렌(連)'이라는 무용단이 샤미센, 북, 징 등 악기 반주에 맞춰 흥겹게 춤을 춥니다.",
     menus: [
         {
             id: 1,

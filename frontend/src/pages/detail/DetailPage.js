@@ -29,20 +29,22 @@ const DetailPage = ({ region }) => {
       <Header />
       {/* Hero Section */}
       <section className="main-visual">
-        <div id="detailCarousel" className="carousel slide shadow" data-bs-ride="carousel">
-          <div className="carousel-inner">
-            {region.images.map((img, index) => (
-              <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                <img src={img} className="d-block w-100 main-carousel-img" alt="축제 전경" />
-              </div>
-            ))}
+        <div className="carousel-wrap">
+          <div id="detailCarousel" className="carousel slide shadow carousel-sm" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              {region.images.map((img, index) => (
+                <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                  <img src={img} className="d-block w-100 main-carousel-img" alt="축제 전경" />
+                </div>
+              ))}
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#detailCarousel" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon"></span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#detailCarousel" data-bs-slide="next">
+              <span className="carousel-control-next-icon"></span>
+            </button>
           </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#detailCarousel" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon"></span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#detailCarousel" data-bs-slide="next">
-            <span className="carousel-control-next-icon"></span>
-          </button>
         </div>
       </section>
       {/* Content Container  */}

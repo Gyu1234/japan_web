@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "일본 애니메이션",
     images: [
-        "/images/detailpage/arts/anime.jpg"
+        "/images/detailpage/arts/anime.jpg",
+        "/images/detailpage/arts/anime2.jpg",
+        "/images/detailpage/arts/anime3.jpg"
     ],
     description: "풍부한 상상력으로 전 세계의 사랑을 받는 애니메이션입니다.",
     longDescription: "일본 애니메이션(Anime)은 일본에서 제작된 애니메이션 작품들을 총칭하며, 독특한 화풍, 다양한 장르, 깊이 있는 스토리텔링을 통해 전 세계적으로 큰 인기를 얻고 있습니다. 주로 나무위키(일본 애니메이션)와 위키백과에 따르면, 만화나 소설을 원작으로 하는 경우가 많으며 TV 시리즈(TV판), 극장판, OVA 등 다양한 형태로 유통됩니다. 1960년대 철완 아톰 이후 리미티드 애니메이션 기법을 발달시켜 캐릭터와 스토리를 강조하는 특유의 문화를 형성했습니다. ",

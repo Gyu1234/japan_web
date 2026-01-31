@@ -3,10 +3,12 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "간다 마츠리",
     images: [
-        "/images/detailpage/festivals/ganda.jpg"
+        "/images/detailpage/festivals/ganda.jpg",
+        "/images/detailpage/festivals/ganda2.jpg",
+        "/images/detailpage/festivals/ganda3.jpg"
     ],
     description: "도심 속 박력 넘치는 가마 행진이 펼쳐지는 축제입니다.",
-    longDescription: "설명",
+    longDescription: "일본 도쿄 간다묘진 신사에서 2년마다(홀수해) 5월 중순에 열리는 일본 3대 마츠리이자 에도 시대부터 이어진 전통 축제입니다. 약 200여 대의 미코시(신여, 가마)가 도쿄 도심(아키하바라, 니혼바시 등)을 행진하며, 5월 15일 직전 주말에 집중적으로 열려 장관을 연출합니다.",
     menus: [
         {
             id: 1,
