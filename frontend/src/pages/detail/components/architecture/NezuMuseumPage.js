@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "네즈 미술관",
     images: [
-        "/images/detailpage/architecture/nezumuseum.jpg"
+        "/images/detailpage/architecture/nezumuseum.jpg",
+        "/images/detailpage/architecture/nezumuseum2.jpg",
+        "/images/detailpage/architecture/nezumuseum3.jpg"
     ],
     description: "현대적인 건축과 고요한 전통 정원이 조화를 이루는 곳입니다.",
     longDescription: "도부 철도 사장 등을 지낸 사업가 네즈 가이치로의 수집품을 바탕으로 1941년 개관한 사립 미술관입니다. 일본 및 동아시아의 국보와 중요문화재를 포함한 고미술품 약 7,600여 점을 소장하고 있으며, 쿠마 켄고가 설계한 현대적인 건물과 도심 속 숨겨진 17,000㎡ 규모의 아름다운 전통 정원으로 유명합니다. ",

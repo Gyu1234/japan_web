@@ -103,12 +103,108 @@
   padding: 0 20px;
 }
 
+/* ==============================side============================== */
+
 /* 사이드바 고정 (리스트가 길 때 유용함) */
 .sidebar-sticky {
   position: sticky;
   top: 100px;
   z-index: 5;
 }
+
+.sidebar {
+  background-color: #fff;
+  border-right: 1px solid #f1f1f1;
+  padding: 16px;
+}
+
+.sidebar-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 18px 0 10px;
+  color: #333;
+  position: relative;
+  padding-left: 10px;
+}
+
+.sidebar-section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 14px;
+  background-color: #f0c14b;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.sidebar .form-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebar .form-check:hover {
+  background-color: rgba(240, 193, 75, 0.15);
+}
+
+input[type="checkbox"]:checked {
+  background-color: #f1c40f;
+  border-color: #f1c40f;
+}
+
+.sidebar input[type="checkbox"]:checked+span {
+  color: #b88900;
+  font-weight: 700;
+}
+
+.sidebar-section-header:hover button {
+  color: #f0c14b;
+}
+
+.sidebar-section-header:hover .accordion-button::after {
+  filter: brightness(0) saturate(100%) invert(74%) sepia(52%) saturate(460%) hue-rotate(359deg);
+}
+
+.sidebar .accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(240, 193, 75, 0.4);
+  border-color: #f0c14b;
+}
+
+.sidebar .accordion-button:not(.collapsed) {
+  background-color: rgba(240, 193, 75, 0.15);
+  color: #333;
+}
+
+.location-body {
+  padding: 0 !important;
+}
+
+.list-group-item {
+  border: none !important;
+  border-bottom: 1px solid #f9f9f9 !important;
+  padding: 12px 20px !important;
+  transition: all 0.2s ease;
+}
+
+.list-group-item:hover {
+  background-color: #fff9e6 !important;
+  color: #f0c14b !important;
+  cursor: pointer;
+}
+
+.accordion-item {
+  border: none !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* ==============================card============================== */
 
 /* 리스트 간격 및 구분선 */
 .list-header {
@@ -124,11 +220,10 @@
   margin-top: 20px;
 }
 
-/* ==============================card============================== */
 .result-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .result-card {

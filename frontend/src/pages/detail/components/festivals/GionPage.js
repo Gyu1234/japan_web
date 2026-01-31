@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "기온 마츠리",
     images: [
-        "/images/detailpage/festivals/gion.jpg"
+        "/images/detailpage/festivals/gion.jpg",
+        "/images/detailpage/festivals/gion2.jpg",
+        "/images/detailpage/festivals/gion3.jpg"
     ],
     description: "천년의 역사를 이어온 교토 최대의 여름 축제",
     longDescription: "교토를 상징하는 기온 마츠리는 1,100년 이상의 역사를 지닌 일본의 대표적인 여름 축제로, 액운을 물리치고 도시의 안녕을 기원하는 의미를 담고 있습니다. 7월 한 달간 도시 전역이 축제 분위기로 물들며, 특히 거대한 수레인 '야마보코'가 거리를 행진하는 화려한 순행은 축제의 정점이자 놓칠 수 없는 장관입니다.",

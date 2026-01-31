@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "아사쿠사 문화관광센터",
     images: [
-        "/images/detailpage/architecture/asakusa.jpg"
+        "/images/detailpage/architecture/asakusa.jpg",
+        "/images/detailpage/architecture/asakusa2.jpg",
+        "/images/detailpage/architecture/asakusa3.jpg"
     ],
     description: "거대한 등불이 반겨주는 에도 시대의 정취를 품은 사찰입니다.",
     longDescription: "아사쿠사라고 하면 센소지(浅草寺)의 카미나리몬(雷門) 그 카미나리몬 도로에 낀 건너편에 눈에 띄는 일본의 현대풍 외관의 빌딩이 있습니다. 바로 타이토(台東)구에서 운영하는 '아사쿠사 문화관광센터'입니다.",

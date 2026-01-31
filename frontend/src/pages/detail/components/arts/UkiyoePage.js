@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "우키요에(浮世絵)",
     images: [
-        "/images/detailpage/arts/ukioye.jpg"
+        "/images/detailpage/arts/ukioye.jpg",
+        "/images/detailpage/arts/ukioye2.jpg",
+        "/images/detailpage/arts/ukioye3.jpg"
     ],
     description: "에도 시대의 서민적 삶을 강렬한 색채로 그려낸 목판화입니다.",
     longDescription: "우키요에는 17세기에서 20세기 초 일본 에도 시대에 성립한 당대 사람들의 일상 생활이나 풍경, 풍물 등을 그린 풍속화의 형태를 말한다. 현재는 일반적으로 '우키요에'라고 하면 여러 가지 색상으로 찍힌 목판화인 니시키에를 말하는 예가 많으나 육필화도 이 범주에 들어간다.",

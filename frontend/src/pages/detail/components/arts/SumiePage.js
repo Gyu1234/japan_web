@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "스미에",
     images: [
-        "/images/detailpage/arts/sumi-e.jpg"
+        "/images/detailpage/arts/sumi-e.jpg",
+        "/images/detailpage/arts/sumi-e2.jpg",
+        "/images/detailpage/arts/sumi-e3.jpg"
     ],
     description: "먹의 농담으로 자연의 본질을 담아낸 수묵화 예술입니다.",
     longDescription: "스미에(墨絵, Sumi-e)는 검은 먹(Sumi)과 붓을 사용하여 흰 종이 위에 자연의 풍경, 새, 꽃, 인물 등을 그리는 일본의 전통 수묵화 문화입니다. 14세기 무렵 중국에서 건너와 일본의 선종(Zen) 불교와 결합하여 고유한 예술 형태로 발전했으며, 단순함과 여백의 미를 중시하는 것이 특징입니다. ",

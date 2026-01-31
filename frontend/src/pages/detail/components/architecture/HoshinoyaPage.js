@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "호시노야 도쿄",
     images: [
-        "/images/detailpage/architecture/hoshinoya.jpg"
+        "/images/detailpage/architecture/hoshinoya.jpg",
+        "/images/detailpage/architecture/hoshinoya2.jpg",
+        "/images/detailpage/architecture/hoshinoya3.jpg"
     ],
     description: "전통 료칸의 미학을 현대적 감각으로 재해석한 공간입니다.",
     longDescription: "호시노야 도쿄는 도쿄 오테마치 중심부에 위치한 고층 타워형 럭셔리 료칸으로, 에도 시대의 환대 문화를 현대적으로 재해석한 '탑의 일본 료칸'입니다. 17층 건물 전체에 다다미가 깔려 있고, 각 층마다 전용 오차노마(라운지)가 있어 도심 속에서 고요한 전통 휴식과 온천을 즐길 수 있는 특별한 숙소입니다. ",

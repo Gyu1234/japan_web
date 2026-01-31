@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "온천문화",
     images: [
-        "/images/detailpage/tradition/onsen.jpg"
+        "/images/detailpage/tradition/onsen.jpg",
+        "/images/detailpage/tradition/onsen2.jpg",
+        "/images/detailpage/tradition/onsen3.jpg"
     ],
     description: "일상의 피로를 풀고 여유를 즐기는 일본의 온천 문화입니다.",
     longDescription: "온천(온센)은 일본 문화의 일부가 된지 오래입니다. 이동하는 네 개의 대륙판 위로 자리한 일본 특유의 위치와 수많은 활화산으로 인해 수천 곳의 천연 온천이 생겨났습니다. 온천은 지열로 데워지며 온천수의 미네랄 성분은 표면으로 올라올 때 자리한 주변 암석에 의해 결정됩니다. 미네랄이 풍부한 온천수로 목욕을 하면 피부가 진정되며, 혈액 순환이 촉진되고 뻣뻣한 관절이 이완되는 등 치료 효능이 있다고 알려져 있습니다.",

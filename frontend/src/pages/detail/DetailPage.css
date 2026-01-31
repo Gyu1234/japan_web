@@ -1,13 +1,12 @@
 /* ✅ 가로 폭 줄이기 + 가운데 정렬 */
 .carousel-wrap {
-  width: 100%;
-  max-width: 820px;
+  max-width: 2000px;
   margin: 0 auto;
 }
 
 /* ✅ 캐러셀 세로 높이 조절 */
 .carousel-sm .carousel-item {
-  height: 400px; /* 320px보다 조금 더 시원하게 키웠습니다 */
+  height: 900px;
   background-color: #f8f9fa;
 }
 

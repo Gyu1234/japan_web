@@ -3,7 +3,9 @@ import DetailPage from "../../DetailPage";
 const region = {
     name: "교토역 빌딩",
     images: [
-        "/images/detailpage/architecture/kyotostation.jpg"
+        "/images/detailpage/architecture/kyotostation.jpg",
+        "/images/detailpage/architecture/kyotostation2.jpg",
+        "/images/detailpage/architecture/kyotostation3.jpg"
     ],
     description: "미래지향적 설계로 교토의 관문을 상징하는 현대 건축물입니다.",
     longDescription: "교토역 빌딩은 하라 히로시가 설계한 지하 3층, 지상 16층의 현대적 복합 랜드마크입니다. 철골과 유리의 거대한 구조물로, 교토의 전통적인 풍경과 대비되는 웅장한 내부 공간을 자랑하며 쇼핑몰, 호텔, 극장, 레스토랑, 전망대 등을 갖춘 교통과 문화의 핵심지입니다. ",
